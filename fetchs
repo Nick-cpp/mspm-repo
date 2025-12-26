@@ -1,0 +1,11 @@
+#!/bin/bash
+
+while true; do
+    for cmd in fastfetch neofetch wefetch uwufetch ufetch; do
+        if command -v $cmd &> /dev/null; then
+            $cmd
+            sleep 5
+            clear
+        fi
+    done
+done
