@@ -3,7 +3,9 @@
 depends=("bash")
 
 install() {
-    wget https://github.com/dylanaraps/neofetch/archive/refs/tags/7.1.0.tar.gz
+    if [ ! -f 7.1.0.tar.gz ]; then
+        wget https://github.com/dylanaraps/neofetch/archive/refs/tags/7.1.0.tar.gz
+    fi
     tar -xf 7.1.0.tar.gz
     cd neofetch-7.1.0/
     make install
