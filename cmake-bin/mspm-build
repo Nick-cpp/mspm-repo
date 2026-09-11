@@ -7,11 +7,21 @@ install() {
         wget https://github.com/Kitware/CMake/releases/download/v4.4.3/cmake-4.4.3-linux-x86_64.tar.gz
     fi
     tar -xf cmake-4.4.3-linux-x86_64.tar.gz
-    cp cmake-4.4.3-linux-x86_64/ /opt/cmake-4.4.3/
-    ln -s /opt/cmake-4.4.3/bin/* /usr/bin/
+
+    mkdir -p /opt/cmake-4.4.3
+    mkdir -p /usr/bin
+
+    cp -r cmake-4.4.3-linux-x86_64/* /opt/cmake-4.4.3/
+
+    for bin in /opt/cmake-4.4.3/bin/*; do
+        name=$(basename "$bin")
+        ln -sf "/opt/cmake-4.4.3/bin/$name" "/usr/bin/$name"
+    done
 }
 
 remove() {
+    for bin in /opt/cmake-4.4.3/bin/*; do
+        [ -e "$bin" ] && rm -f "/usr/bin/$(basename "$bin")"
+    done
     rm -rf /opt/cmake-4.4.3
-    rm -f /usr/bin/ccmake /usr/bin/cmake /usr/bin/cmake-gui /usr/bin/cpack /usr/bin/ctest
 }
