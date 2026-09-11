@@ -1,0 +1,17 @@
+#!/bin/sh
+
+depends=()
+
+install() {
+    if [ ! -f cmake-4.4.3-linux-x86_64.tar.gz ]; then
+        wget https://github.com/Kitware/CMake/releases/download/v4.4.3/cmake-4.4.3-linux-x86_64.tar.gz
+    fi
+    tar -xf cmake-4.4.3-linux-x86_64.tar.gz
+    cp cmake-4.4.3-linux-x86_64/ /opt/cmake-4.4.3/
+    ln -s /opt/cmake-4.4.3/bin/* /usr/bin/
+}
+
+remove() {
+    rm -rf /opt/cmake-4.4.3
+    rm -f /usr/bin/ccmake /usr/bin/cmake /usr/bin/cmake-gui /usr/bin/cpack /usr/bin/ctest
+}
