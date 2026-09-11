@@ -1,0 +1,16 @@
+#!/bin/sh
+
+depends=()
+
+install() {
+    if [ ! -f 7.1.0.tar.gz ]; then
+        wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.68.1/fastfetch-linux-amd64.tar.gz
+    fi
+    tar -xf fastfetch-linux-amd64.tar.gz
+    cd fastfetch-linux-amd64/
+    cp -rf usr/bin/fastfetch /usr/bin/fastfetch
+}
+
+remove() {
+    rm /usr/bin/fastfetch
+}
