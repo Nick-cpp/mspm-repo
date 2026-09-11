@@ -8,10 +8,10 @@ install() {
     fi
     tar -xf 7.1.0.tar.gz
     cd neofetch-7.1.0/
-    make install
+    make install $MAKEOPTS
 }
 
 remove() {
     cd neofetch-7.1.0/
-    make uninstall
+    make uninstall $MAKEOPTS
 }
