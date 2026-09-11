@@ -3,7 +3,7 @@
 depends=()
 
 install() {
-    if [ ! -f 7.1.0.tar.gz ]; then
+    if [ ! -f fastfetch-linux-amd64.tar.gz ]; then
         wget https://github.com/fastfetch-cli/fastfetch/releases/download/2.68.1/fastfetch-linux-amd64.tar.gz
     fi
     tar -xf fastfetch-linux-amd64.tar.gz
