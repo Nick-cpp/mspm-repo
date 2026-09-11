@@ -1,2 +1,8 @@
-curl neofetch.sh > neofetch
-chmod +x neofetch
+install() {
+    curl neofetch.sh > neofetch
+    chmod +x neofetch
+}
+
+remove() {
+    rm -f /tmp/mspm/neofetch
+}
