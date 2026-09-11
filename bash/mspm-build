@@ -15,5 +15,5 @@ install() {
 
 remove() {
     cd bash-5.3/
-    make uninstall DESTDIR="/tmp/mspm-test"
+    make uninstall DESTDIR="/tmp/mspm-test" $MAKEOPTS
 }
