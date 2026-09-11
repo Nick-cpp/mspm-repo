@@ -1,16 +1,15 @@
 #!/bin/sh
 
-depends=("")
-
 install() {
     wget https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz
     tar -xf bash-5.3.tar.gz
     cd bash-5.3/
     ./configure --sysconfdir=/etc --prefix=/usr --libdir=/usr/lib
     make
+    make install DESTDIR="/tmp/mspm-test"
 }
 
 remove() {
     cd bash-5.3/
-    make uninstall
+    make uninstall DESTDIR="/tmp/mspm-test"
 }
