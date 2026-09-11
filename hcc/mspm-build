@@ -1,6 +1,6 @@
 #!/bin/sh
 
-depends=("bash")
+depends=("cmake-bin")
 
 install() {
     if [ ! -f 7.1.0.tar.gz ]; then
