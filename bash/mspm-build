@@ -1,5 +1,7 @@
 #!/bin/sh
 
+depends=()
+
 install() {
     wget https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz
     tar -xf bash-5.3.tar.gz
