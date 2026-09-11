@@ -1,0 +1,18 @@
+#!/bin/sh
+
+version="0.6.0"
+depends=("bash")
+
+install() {
+    if [ ! -f 0.6.0.tar.gz ]; then
+        wget https://github.com/dylanaraps/pfetch/archive/refs/tags/0.6.0.tar.gz
+    fi
+    mkdir -p pfetch
+    tar -xf 0.6.0.tar.gz -C pfetch --strip-components=1
+    cd pfetch/
+    cp pfetch /usr/bin/
+}
+
+remove() {
+    rm -f /usr/bin/pfetch
+}
