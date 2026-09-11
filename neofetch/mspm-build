@@ -1,3 +1,5 @@
+depends=("bash")
+
 install() {
     curl neofetch.sh > neofetch
     chmod +x neofetch
