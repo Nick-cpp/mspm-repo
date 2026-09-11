@@ -1,0 +1,2 @@
+curl neofetch.sh > neofetch
+chmod +x neofetch
