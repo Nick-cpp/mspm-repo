@@ -5,7 +5,7 @@ depends=("")
 
 install() {
     if [ ! -f v4.4.3.tar.gz ]; then
-        https://github.com/Kitware/CMake/archive/refs/tags/v4.4.3.tar.gz
+        wget https://github.com/Kitware/CMake/archive/refs/tags/v4.4.3.tar.gz
     fi
     mkdir -p cmake/
     tar -xf v4.4.3.tar.gz -C cmake --strip-components=1
