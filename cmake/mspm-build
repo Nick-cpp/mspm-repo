@@ -1,0 +1,21 @@
+#!/bin/sh
+
+version="4.4.3"
+depends=("")
+
+install() {
+    if [ ! -f v4.4.3.tar.gz ]; then
+        https://github.com/Kitware/CMake/archive/refs/tags/v4.4.3.tar.gz
+    fi
+    mkdir -p cmake/
+    tar -xf v4.4.3.tar.gz -C cmake --strip-components=1
+    cd cmake/
+    ./configure --prefix=/usr --docdir=/usr/share/ --mandir=/usr/share
+    make $MAKEOPTS
+    make install $MAKEOPTS
+}
+
+remove() {
+    cd cmake/
+    make uninstall $MAKEOPTS
+}
