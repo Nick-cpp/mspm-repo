@@ -1,0 +1,19 @@
+#!/bin/sh
+
+version="2.6"
+depends=("bash")
+
+install() {
+    if [ ! -f 2.6.tar.gz ]; then
+        wget https://github.com/Nick-cpp/mspm/archive/refs/tags/2.6.tar.gz
+    fi
+    mkdir -p mspm/
+    tar -xf 2.6.tar.gz -C mspm/ --strip-components=1
+    cd mspm/
+    chmod +x mspm
+    cp mspm /usr/bin/
+}
+
+remove() {
+    rm -f /usr/bin/mspm
+}
