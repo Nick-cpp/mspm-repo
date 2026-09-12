@@ -1,7 +1,7 @@
 #!/bin/sh
 
 version="1.4.7"
-depends=("cmake-bin")
+depends=("cmake-bin||cmake")
 
 install() {
     if [ ! -f v1.4.7.tar.gz ]; then
