@@ -11,7 +11,6 @@ install() {
     tar -xf cmake-4.4.3-linux-x86_64.tar.gz -C cmake --strip-components=1
 
     mkdir -p /opt/cmake
-    mkdir -p /usr/bin
 
     cp -r cmake/* /opt/cmake/
 
