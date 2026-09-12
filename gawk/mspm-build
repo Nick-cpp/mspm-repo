@@ -1,0 +1,21 @@
+#!/bin/sh
+
+version="5.4.1"
+depends=("")
+
+install() {
+    if [ ! -f gawk-5.4.1.tar.gz ]; then
+        wget https://ftp.gnu.org/gnu/gawk/gawk-5.4.1.tar.gz
+    fi
+    mkdir -p gawk/
+    tar -xf gawk-5.4.1.tar.gz -C gawk --strip-components=1
+    cd gawk/
+    ./configure --prefix=/usr
+    make $MAKEOPTS
+    make install $MAKEOPTS
+}
+
+remove() {
+    cd gawk/
+    make uninstall $MAKEOPTS
+}

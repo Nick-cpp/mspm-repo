@@ -1,0 +1,21 @@
+#!/bin/sh
+
+version="1.4.21"
+depends=("")
+
+install() {
+    if [ ! -f m4-1.4.21.tar.gz ]; then
+        wget https://ftp.gnu.org/gnu/m4/m4-1.4.21.tar.gz
+    fi
+    mkdir -p m4/
+    tar -xf m4-1.4.21.tar.gz -C m4 --strip-components=1
+    cd m4/
+    ./configure --prefix=/usr
+    make $MAKEOPTS
+    make install $MAKEOPTS
+}
+
+remove() {
+    cd m4/
+    make uninstall $MAKEOPTS
+}

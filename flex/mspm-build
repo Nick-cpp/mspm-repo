@@ -1,0 +1,21 @@
+#!/bin/sh
+
+version="2.6.4"
+depends=("")
+
+install() {
+    if [ ! -f flex-2.6.4.tar.gz ]; then
+        wget https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz
+    fi
+    mkdir -p flex/
+    tar -xf flex-2.6.4.tar.gz -C flex --strip-components=1
+    cd flex/
+    LEX=: ./configure --prefix=/usr
+    make $MAKEOPTS
+    make install $MAKEOPTS
+}
+
+remove() {
+    cd flex/
+    make uninstall $MAKEOPTS
+}
