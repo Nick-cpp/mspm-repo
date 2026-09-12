@@ -10,7 +10,7 @@ install() {
     mkdir -p cmake/
     tar -xf v4.4.3.tar.gz -C cmake --strip-components=1
     cd cmake/
-    ./configure --prefix=/usr --docdir=/usr/share/ --mandir=/usr/share
+    ./configure --prefix=/usr --docdir=share --mandir=share
     make $MAKEOPTS
     make install $MAKEOPTS
 }
