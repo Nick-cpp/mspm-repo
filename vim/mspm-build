@@ -11,7 +11,7 @@ install() {
     mkdir -p vim/
     tar -xf v$version.tar.gz -C vim --strip-components=1
     cd vim/
-    ./configure --prefix=/usr --sysconfdir=/etc
+    ./configure --prefix=/usr --sysconfdir=/etc --with-features=huge --enable-python3interp=yes
     make
     make install
 }
