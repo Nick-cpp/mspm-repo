@@ -1,14 +1,14 @@
 #!/bin/sh
 
-version="2.7"
+version="2.8"
 depends=("bash")
 
 install() {
-    if [ ! -f 2.7.tar.gz ]; then
-        wget https://github.com/Nick-cpp/mspm/archive/refs/tags/2.7.tar.gz
+    if [ ! -f 2.8.tar.gz ]; then
+        wget https://github.com/Nick-cpp/mspm/archive/refs/tags/2.8.tar.gz
     fi
     mkdir -p mspm/
-    tar -xf 2.7.tar.gz -C mspm/ --strip-components=1
+    tar -xf 2.8.tar.gz -C mspm/ --strip-components=1
     cd mspm/
     chmod +x mspm
     cp mspm /usr/bin/
