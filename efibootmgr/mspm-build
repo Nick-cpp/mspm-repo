@@ -10,7 +10,6 @@ install() {
     mkdir -p efibootmgr/
     tar -xf 18.tar.gz -C efibootmgr --strip-components=1
     cd efibootmgr/
-    ./configure --prefix=/usr
 	make EFIDIR=NoPersonalLife-Linux
 	make EFIDIR=NoPersonalLife-Linux MANDOC=true install
 }
