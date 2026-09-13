@@ -10,7 +10,7 @@ install() {
     mkdir -p ncurses/
     tar -xf ncurses-6.6.tar.gz -C ncurses --strip-components=1
     cd ncurses/
-    ./configure --prefix=/usr --mandir=/usr/share/man --with-shared --without-debug --enable-widec --enable-pc-files --with-pkg-config-libdir=/usr/lib/pkgconfig
+    ./configure --prefix=/usr --mandir=/usr/share/man --with-shared --without-debug --enable-widec --enable-pc-files --with-pkg-config-libdir=/usr/lib/pkgconfig --with-termlib
     make
     make install
 }
