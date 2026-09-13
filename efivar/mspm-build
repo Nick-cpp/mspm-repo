@@ -10,7 +10,6 @@ install() {
     mkdir -p efivar/
     tar -xf 39.tar.gz -C efivar --strip-components=1
     cd efivar/
-    ./configure --prefix=/usr
 	make CFLAGS="-Wno-error" MANDOC=true
 	make install MANDOC=true
 }
