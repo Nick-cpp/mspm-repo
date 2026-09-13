@@ -11,11 +11,11 @@ install() {
     tar -xf bison-3.8.2.tar.gz -C bison --strip-components=1
     cd bison/
     ./configure --prefix=/usr
-    make $MAKEOPTS
-    make install $MAKEOPTS
+    make
+    make install
 }
 
 remove() {
     cd bison/
-    make uninstall $MAKEOPTS
+    make uninstall
 }

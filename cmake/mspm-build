@@ -11,11 +11,11 @@ install() {
     tar -xf v4.4.3.tar.gz -C cmake --strip-components=1
     cd cmake/
     ./configure --prefix=/usr --docdir=share --mandir=share
-    make $MAKEOPTS
-    make install $MAKEOPTS
+    make
+    make install
 }
 
 remove() {
     cd cmake/
-    make uninstall $MAKEOPTS
+    make uninstall
 }

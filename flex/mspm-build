@@ -11,11 +11,11 @@ install() {
     tar -xf flex-2.6.4.tar.gz -C flex --strip-components=1
     cd flex/
     LEX=: ./configure --prefix=/usr
-    make $MAKEOPTS
-    make install $MAKEOPTS
+    make
+    make install
 }
 
 remove() {
     cd flex/
-    make uninstall $MAKEOPTS
+    make uninstall
 }

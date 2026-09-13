@@ -11,11 +11,11 @@ install() {
     tar -xf m4-1.4.21.tar.gz -C m4 --strip-components=1
     cd m4/
     ./configure --prefix=/usr
-    make $MAKEOPTS
-    make install $MAKEOPTS
+    make
+    make install
 }
 
 remove() {
     cd m4/
-    make uninstall $MAKEOPTS
+    make uninstall
 }

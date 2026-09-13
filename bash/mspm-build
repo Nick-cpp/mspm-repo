@@ -11,11 +11,11 @@ install() {
     tar -xf bash-5.3.tar.gz -C bash --strip-components=1
     cd bash/
     ./configure --sysconfdir=/etc --prefix=/usr --libdir=/usr/lib
-    make $MAKEOPTS
-    make install $MAKEOPTS
+    make
+    make install
 }
 
 remove() {
     cd bash/
-    make uninstall $MAKEOPTS
+    make uninstall
 }

@@ -11,11 +11,11 @@ install() {
     tar -xf gawk-5.4.1.tar.gz -C gawk --strip-components=1
     cd gawk/
     ./configure --prefix=/usr
-    make $MAKEOPTS
-    make install $MAKEOPTS
+    make
+    make install
 }
 
 remove() {
     cd gawk/
-    make uninstall $MAKEOPTS
+    make uninstall
 }
