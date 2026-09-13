@@ -1,0 +1,22 @@
+#!/bin/bash
+
+version="9.1.1652"
+depends=("ncurses")
+
+install() {
+    if [ ! -f v$version.tar.gz ]; then
+        wget https://github.com/vim/vim/archive/refs/tags/v$version.tar.gz
+    fi
+    rm -rf vim/
+    mkdir -p vim/
+    tar -xf v$version.tar.gz -C vim --strip-components=1
+    cd vim/
+    ./configure --prefix=/usr --sysconfdir=/etc --with-features=huge --disable-gui --with-x --with-wayland --enable-fail-if-missing
+    make
+    make install
+}
+
+remove() {
+    cd vim/
+    make uninstall
+}
