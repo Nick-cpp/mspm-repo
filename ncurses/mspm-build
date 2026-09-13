@@ -1,0 +1,21 @@
+#!/bin/sh
+
+version="6.6"
+depends=("pkgconf")
+
+install() {
+    if [ ! -f ncurses-6.6.tar.gz ]; then
+        wget https://ftp.gnu.org/gnu/ncurses/ncurses-6.6.tar.gz
+    fi
+    mkdir -p ncurses/
+    tar -xf ncurses-6.6.tar.gz -C ncurses --strip-components=1
+    cd ncurses/
+    ./configure --prefix=/usr --mandir=/usr/share/man --with-shared --without-debug --enable-widec --enable-pc-files --with-pkg-config-libdir=/usr/lib/pkgconfig
+    make
+    make install
+}
+
+remove() {
+    cd ncurses/
+    make uninstall
+}

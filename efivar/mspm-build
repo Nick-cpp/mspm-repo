@@ -1,0 +1,21 @@
+#!/bin/sh
+
+version="39"
+depends=("")
+
+install() {
+    if [ ! -f 39.tar.gz ]; then
+        wget https://github.com/rhboot/efivar/archive/refs/tags/39.tar.gz
+    fi
+    mkdir -p efivar/
+    tar -xf 39.tar.gz -C efivar --strip-components=1
+    cd efivar/
+    ./configure --prefix=/usr
+	make CFLAGS="-Wno-error" MANDOC=true
+	make install MANDOC=true
+}
+
+remove() {
+    cd efivar/
+    make uninstall MANDOC=true
+}

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+version="2.14"
+depends=("efibootmgr" "efivar" "flex" "bison")
+
+install() {
+    if [ ! -f grub-2.14.tar.xz ]; then
+        wget https://ftp.gnu.org/gnu/grub/grub-2.14.tar.xz
+    fi
+    mkdir -p grub/
+    tar -xf grub-2.14.tar.xz -C grub --strip-components=1
+    cd grub/
+    ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib --localstatedir=/var --disable-werror --with-platform=efi
+    make
+    make install
+}
+
+remove() {
+    cd grub/
+    make uninstall
+}

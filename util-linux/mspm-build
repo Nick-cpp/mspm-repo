@@ -1,0 +1,21 @@
+#!/bin/sh
+
+version="2.42.2"
+depends=("")
+
+install() {
+    if [ ! -f util-linux-2.42.2.tar.xz ]; then
+        wget https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v2.42/util-linux-2.42.2.tar.xz
+    fi
+    mkdir -p util-linux/
+    tar -xf util-linux-2.42.2.tar.xz -C util-linux --strip-components=1
+    cd util-linux/
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-nls --disable-pam --disable-systemd --disable-chroot --disable-login --disable-su --disable-use-tty-group
+    make
+    make install
+}
+
+remove() {
+    cd util-linux/
+    make uninstall
+}

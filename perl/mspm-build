@@ -1,0 +1,23 @@
+#!/bin/sh
+
+version="5.44.0"
+depends=("pkgconf")
+
+install() {
+    if [ ! -f perl-5.44.0.tar.gz ]; then
+        wget https://www.cpan.org/src/5.0/perl-5.44.0.tar.gz
+    fi
+    mkdir -p perl/
+    tar -xf perl-5.44.0.tar.gz -C perl --strip-components=1
+    cd perl/
+
+	sh Configure -des -Dprefix=/usr -Dvendorprefix=/usr -Dprivlib=/usr/lib/perl5/5.44/core_perl -Darchlib=/usr/lib/perl5/5.44/core_perl -Dsitelib=/usr/lib/perl5/5.44/site_perl -Dsitearch=/usr/lib/perl5/5.44/site_perl -Dvendorlib=/usr/lib/perl5/5.44/vendor_perl -Dvendorarch=/usr/lib/perl5/5.44/vendor_perl -Duseshrplib -Dusethreads
+
+    make
+    make install
+}
+
+remove() {
+    cd perl/
+    make uninstall
+}

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 version="2.6.4"
-depends=("")
+depends=("m4")
 
 install() {
     if [ ! -f flex-2.6.4.tar.gz ]; then

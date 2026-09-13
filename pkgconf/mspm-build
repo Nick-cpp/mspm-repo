@@ -1,0 +1,23 @@
+#!/bin/sh
+
+version="3.0.4"
+depends=("")
+
+install() {
+    if [ ! -f pkgconf-3.0.4.tar.xz ]; then
+        wget https://github.com/pkgconf/pkgconf/releases/download/pkgconf-3.0.4/pkgconf-3.0.4.tar.xz
+    fi
+    mkdir -p pkgconf/
+    tar -xf pkgconf-3.0.4.tar.xz -C pkgconf --strip-components=1
+    cd pkgconf/
+    ./configure --prefix=/usr --sysconfdir=/etc --disable-static
+    make
+    make install
+    ln -sv pkgconf /usr/bin/pkg-config
+}
+
+remove() {
+    cd pkgconf/
+    make uninstall
+    rm -f /usr/bin/pkg-config
+}
