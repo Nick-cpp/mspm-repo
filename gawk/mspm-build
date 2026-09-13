@@ -10,7 +10,7 @@ install() {
     mkdir -p gawk/
     tar -xf gawk-5.4.1.tar.gz -C gawk --strip-components=1
     cd gawk/
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --sysconfdir=/etc
     make
     make install
 }
