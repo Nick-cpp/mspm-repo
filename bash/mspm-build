@@ -10,7 +10,7 @@ install() {
     mkdir -p bash/
     tar -xf bash-5.3.tar.gz -C bash --strip-components=1
     cd bash/
-    ./configure --sysconfdir=/etc --prefix=/usr --libdir=/usr/lib --without-bash-malloc
+    ./configure --prefix=/usr --libdir=/usr/lib --without-bash-malloc
     make
     make install
 }
