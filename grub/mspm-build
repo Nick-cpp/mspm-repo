@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 version="2.14"
 depends=("efibootmgr" "efivar" "flex" "bison")

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 version="0.6.0"
 depends=("bash")
