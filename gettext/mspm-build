@@ -10,14 +10,17 @@ install() {
     mkdir -p gettext/
     tar -xf gettext-$version.tar.xz -C gettext --strip-components=1
     cd gettext/
-	gl_cv_header_working_wchar_h=yes \
-	gl_cv_header_working_uchar_h=yes \
-	./configure \
-	    --prefix=/usr \
-	    --disable-java \
-	    --disable-native-java \
-	    CFLAGS="${CFLAGS} -D_GNU_SOURCE"
-    make
+
+    ac_cv_header_uchar_h=no \
+    gl_cv_header_working_uchar_h=no \
+    ./configure \
+        --prefix=/usr \
+        --disable-java \
+        --disable-native-java \
+        CFLAGS="${CFLAGS} -D_GNU_SOURCE -Wno-error" \
+        CXXFLAGS="${CXXFLAGS} -D_GNU_SOURCE -Wno-error"
+
+    make -j$(nproc)
     make install
 }
 
