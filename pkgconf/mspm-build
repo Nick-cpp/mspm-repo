@@ -4,10 +4,11 @@ version="3.0.4"
 depends=("")
 
 install() {
-    wget https://github.com/pkgconf/pkgconf/releases/download/pkgconf-3.0.4/pkgconf-3.0.4.tar.xz
+    rm -f pkgconf-$version.tar.xz
+    wget https://github.com/pkgconf/pkgconf/releases/download/pkgconf-$version/pkgconf-$version.tar.xz
     rm -rf pkgconf/
     mkdir -p pkgconf/
-    tar -xf pkgconf-3.0.4.tar.xz -C pkgconf --strip-components=1
+    tar -xf pkgconf-$version.tar.xz -C pkgconf --strip-components=1
     cd pkgconf/
     ./configure --prefix=/usr --sysconfdir=/etc --disable-static
     make

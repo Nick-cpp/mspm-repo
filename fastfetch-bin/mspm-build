@@ -5,6 +5,7 @@ conflicts=("fastfetch")
 depends=()
 
 install() {
+    rm -f fastfetch-linux-amd64.tar.gz
     wget https://github.com/fastfetch-cli/fastfetch/releases/download/$version/fastfetch-linux-amd64.tar.gz
     rm -rf fastfetch/
     mkdir -p fastfetch/

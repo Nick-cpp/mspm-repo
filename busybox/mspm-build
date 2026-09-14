@@ -4,6 +4,7 @@ version="1.36.1"
 depends=("flex" "bison" "m4" "perl" "gawk")
 
 install() {
+    rm -f busybox-$version.tar.bz2
     wget https://busybox.net/downloads/busybox-$version.tar.bz2
     rm -rf busybox/
     mkdir -p busybox/

@@ -4,10 +4,11 @@ version="4.0.1"
 depends=("perl")
 
 install() {
-    wget https://github.com/openssl/openssl/releases/download/openssl-4.0.1/openssl-4.0.1.tar.gz
+    rm -f openssl-$version.tar.gz
+    wget https://github.com/openssl/openssl/releases/download/openssl-$version/openssl-$version.tar.gz
     rm -rf openssl/
     mkdir -p openssl/
-    tar -xf openssl-4.0.1.tar.gz -C openssl --strip-components=1
+    tar -xf openssl-$version.tar.gz -C openssl --strip-components=1
     cd openssl/
     ./config --prefix=/usr --openssldir=/etc/ssl --libdir=lib shared zlib-dynamic
     make

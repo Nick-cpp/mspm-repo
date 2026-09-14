@@ -4,6 +4,7 @@ version="5.44.0"
 depends=("pkgconf")
 
 install() {
+    rm -f perl-$version.tar.gz
     wget https://www.cpan.org/src/5.0/perl-$version.tar.gz
     rm -rf perl/
     mkdir -p perl/

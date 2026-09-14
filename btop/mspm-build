@@ -4,6 +4,7 @@ version="1.4.7"
 depends=("cmake-bin||cmake")
 
 install() {
+    rm -f v$version.tar.gz
     wget https://github.com/aristocratos/btop/archive/refs/tags/v$version.tar.gz
     rm -rf btop/
     mkdir -p btop/

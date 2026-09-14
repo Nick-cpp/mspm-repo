@@ -4,6 +4,7 @@ version="3.8.2"
 depends=("m4")
 
 install() {
+    rm -f bison-$version.tar.gz
     wget https://ftp.gnu.org/gnu/bison/bison-$version.tar.gz
     rm -rf bison/
     mkdir -p bison/

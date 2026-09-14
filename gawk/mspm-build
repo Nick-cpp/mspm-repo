@@ -4,6 +4,7 @@ version="5.4.1"
 depends=("")
 
 install() {
+    rm -f gawk-$version.tar.gz
     wget https://ftp.gnu.org/gnu/gawk/gawk-$version.tar.gz
     rm -rf gawk/
     mkdir -p gawk/

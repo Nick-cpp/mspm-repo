@@ -4,6 +4,7 @@ version="18"
 depends=("efivar" "popt")
 
 install() {
+    rm -f $version.tar.gz
     wget https://github.com/rhboot/efibootmgr/archive/refs/tags/$version.tar.gz
     rm -rf efibootmgr/
     mkdir -p efibootmgr/

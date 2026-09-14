@@ -4,6 +4,7 @@ version="5.3"
 depends=("ncurses")
 
 install() {
+    rm -f bash-$version.tar.gz
     wget https://ftp.gnu.org/gnu/bash/bash-$version.tar.gz
     rm -rf bash/
     mkdir -p bash/

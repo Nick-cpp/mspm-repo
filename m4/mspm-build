@@ -4,6 +4,7 @@ version="1.4.21"
 depends=("")
 
 install() {
+    rm -f m4-$version.tar.gz
     wget https://ftp.gnu.org/gnu/m4/m4-$version.tar.gz
     rm -rf m4/
     mkdir -p m4/

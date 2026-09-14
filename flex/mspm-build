@@ -4,6 +4,7 @@ version="2.6.4"
 depends=("m4")
 
 install() {
+    rm -f flex-$version.tar.gz
     wget https://github.com/westes/flex/releases/download/v$version/flex-$version.tar.gz
     rm -rf flex/
     mkdir -p flex/

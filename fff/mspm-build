@@ -4,6 +4,7 @@ version="2.2"
 depends=("bash")
 
 install() {
+    rm -f $version.tar.gz
     wget https://github.com/dylanaraps/fff/archive/refs/tags/$version.tar.gz
     rm -rf fff/
     mkdir -p fff/

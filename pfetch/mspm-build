@@ -4,10 +4,11 @@ version="0.6.0"
 depends=("bash")
 
 install() {
-    wget https://github.com/dylanaraps/pfetch/archive/refs/tags/0.6.0.tar.gz
+    rm -f $version.tar.gz
+    wget https://github.com/dylanaraps/pfetch/archive/refs/tags/$version.tar.gz
     rm -rf pfetch/
     mkdir -p pfetch/
-    tar -xf 0.6.0.tar.gz -C pfetch --strip-components=1
+    tar -xf $version.tar.gz -C pfetch --strip-components=1
     cd pfetch/
     cp pfetch /usr/bin/
 }

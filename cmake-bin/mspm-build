@@ -5,6 +5,7 @@ conflicts=("cmake")
 depends=()
 
 install() {
+    rm -f cmake-$version-linux-x86_64.tar.gz
     wget https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version-linux-x86_64.tar.gz
     rm -rf cmake/
     mkdir -p cmake

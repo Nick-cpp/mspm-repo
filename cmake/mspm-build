@@ -5,6 +5,7 @@ conflicts=("cmake-bin")
 depends=("")
 
 install() {
+    rm -f v$version.tar.gz
     wget https://github.com/Kitware/CMake/archive/refs/tags/v$version.tar.gz
     rm -rf cmake/
     mkdir -p cmake/

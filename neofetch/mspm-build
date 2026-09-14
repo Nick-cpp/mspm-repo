@@ -4,6 +4,7 @@ version="7.1.0"
 depends=("bash")
 
 install() {
+    rm -f $version.tar.gz
     wget https://github.com/dylanaraps/neofetch/archive/refs/tags/$version.tar.gz
     rm -rf neofetch/
     mkdir -p neofetch/

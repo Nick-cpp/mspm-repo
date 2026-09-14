@@ -4,6 +4,7 @@ version="39"
 depends=("")
 
 install() {
+    rm -f $version.tar.gz
     wget https://github.com/rhboot/efivar/archive/refs/tags/$version.tar.gz
     rm -rf efivar/
     mkdir -p efivar/
