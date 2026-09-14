@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="0.26"
+depends=("bash")
+
+install() {
+    rm -f gettext-$version.tar.xz
+    wget https://ftp.gnu.org/gnu/gettext/gettext-$version.tar.xz
+    rm -rf gettext/
+    mkdir -p gettext/
+    tar -xf gettext-$version.tar.xz -C gettext --strip-components=1
+    cd gettext/
+    ./configure --prefix=/usr
+    make
+    make install
+}
+
+remove() {
+    cd gettext/
+    make uninstall
+}

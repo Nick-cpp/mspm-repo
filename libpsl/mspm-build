@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="0.23.3"
-depends=("")
+depends=("automake" "autoconf" "libtool" "gettext")
 
 install() {
     rm -f $version.tar.gz
@@ -10,7 +10,7 @@ install() {
     mkdir -p libpsl/
     tar -xf $version.tar.gz -C libpsl --strip-components=1
     cd libpsl/
-    ./autogen.sh
+    autoreconf -fiv
     ./configure --prefix=/usr
     wget -O list/public_suffix_list.dat https://publicsuffix.org/list/public_suffix_list.dat
     make
