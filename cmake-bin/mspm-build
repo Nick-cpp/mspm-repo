@@ -4,11 +4,12 @@ version="4.4.3"
 depends=()
 
 install() {
-    if [ ! -f cmake-4.4.3-linux-x86_64.tar.gz ]; then
-        wget https://github.com/Kitware/CMake/releases/download/v4.4.3/cmake-4.4.3-linux-x86_64.tar.gz
+    if [ ! -f cmake-$version-linux-x86_64.tar.gz ]; then
+        wget https://github.com/Kitware/CMake/releases/download/v$version/cmake-$version-linux-x86_64.tar.gz
     fi
+    rm -rf cmake/
     mkdir -p cmake
-    tar -xf cmake-4.4.3-linux-x86_64.tar.gz -C cmake --strip-components=1
+    tar -xf cmake-$version-linux-x86_64.tar.gz -C cmake --strip-components=1
 
     mkdir -p /opt/cmake
 

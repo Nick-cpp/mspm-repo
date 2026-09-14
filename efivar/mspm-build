@@ -4,11 +4,12 @@ version="39"
 depends=("")
 
 install() {
-    if [ ! -f 39.tar.gz ]; then
-        wget https://github.com/rhboot/efivar/archive/refs/tags/39.tar.gz
+    if [ ! -f $version.tar.gz ]; then
+        wget https://github.com/rhboot/efivar/archive/refs/tags/$version.tar.gz
     fi
+    rm -rf efivar/
     mkdir -p efivar/
-    tar -xf 39.tar.gz -C efivar --strip-components=1
+    tar -xf $version.tar.gz -C efivar --strip-components=1
     cd efivar/
 	make CFLAGS="-Wno-error" MANDOC=true
 	make install MANDOC=true

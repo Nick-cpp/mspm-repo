@@ -7,6 +7,7 @@ install() {
     if [ ! -f v$version.tar.gz ]; then
         wget https://github.com/aristocratos/btop/archive/refs/tags/v$version.tar.gz
     fi
+    rm -rf btop/
     mkdir -p btop/
     tar -xf v$version.tar.gz -C btop --strip-components=1
     cd btop/
