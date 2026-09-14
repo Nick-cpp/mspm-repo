@@ -10,7 +10,11 @@ install() {
     mkdir -p gettext/
     tar -xf gettext-$version.tar.xz -C gettext --strip-components=1
     cd gettext/
-    CFLAGS="${CFLAGS} -std=gnu11" ./configure --prefix=/usr
+	gl_cv_header_working_uchar_h=yes ./configure \
+	    --prefix=/usr \
+	    --disable-java \
+	    --disable-native-java \
+    CFLAGS="${CFLAGS} -Wno-error -D_GNU_SOURCE"
     make
     make install
 }
