@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="2.6.2"
+depends=("bash" "m4")
+
+install() {
+    rm -f libtool-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/libtool/libtool-$version.tar.gz
+    rm -rf libtool/
+    mkdir -p libtool/
+    tar -xf libtool-$version.tar.gz -C libtool --strip-components=1
+    cd libtool/
+    ./configure --prefix=/usr
+    make
+    make install
+}
+
+remove() {
+    cd libtool/
+    make uninstall
+}
