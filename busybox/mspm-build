@@ -1,0 +1,24 @@
+#!/bin/bash
+
+version="1.36.1"
+depends=("flex" "bison" "m4" "perl" "gawk")
+
+install() {
+    if [ ! -f busybox-$version.tar.bz2 ]; then
+        wget https://busybox.net/downloads/busybox-$version.tar.bz2
+    fi
+    rm -rf busybox/
+    mkdir -p busybox/
+    tar -xf busybox-$version.tar.bz2 -C busybox --strip-components=1
+    cd busybox/
+    wget https://github.com/Nick-cpp/busybox-conf/archive/refs/tags/config.tar.gz
+    tar -xf config.tar.gz
+    cp busybox-conf-config/config .config
+    make
+    make install
+}
+
+remove() {
+    cd busybox/
+    make uninstall
+}
