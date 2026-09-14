@@ -4,11 +4,12 @@ version="7.1.0"
 depends=("bash")
 
 install() {
-    if [ ! -f 7.1.0.tar.gz ]; then
-        wget https://github.com/dylanaraps/neofetch/archive/refs/tags/7.1.0.tar.gz
+    if [ ! -f $version.tar.gz ]; then
+        wget https://github.com/dylanaraps/neofetch/archive/refs/tags/$version.tar.gz
     fi
-    mkdir -p neofetch
-    tar -xf 7.1.0.tar.gz -C neofetch --strip-components=1
+    rm -rf neofetch/
+    mkdir -p neofetch/
+    tar -xf $version.tar.gz -C neofetch --strip-components=1
     cd neofetch/
     make install
 }

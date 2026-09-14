@@ -4,11 +4,12 @@ version="2.2"
 depends=("bash")
 
 install() {
-    if [ ! -f 2.2.tar.gz ]; then
-        wget https://github.com/dylanaraps/fff/archive/refs/tags/2.2.tar.gz
+    if [ ! -f $version.tar.gz ]; then
+        wget https://github.com/dylanaraps/fff/archive/refs/tags/$version.tar.gz
     fi
+    rm -rf fff/
     mkdir -p fff/
-    tar -xf 2.2.tar.gz -C fff --strip-components=1
+    tar -xf $version.tar.gz -C fff --strip-components=1
     cd fff/
     make install
 }

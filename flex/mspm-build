@@ -4,11 +4,12 @@ version="2.6.4"
 depends=("m4")
 
 install() {
-    if [ ! -f flex-2.6.4.tar.gz ]; then
-        wget https://github.com/westes/flex/releases/download/v2.6.4/flex-2.6.4.tar.gz
+    if [ ! -f flex-$version.tar.gz ]; then
+        wget https://github.com/westes/flex/releases/download/v$version/flex-$version.tar.gz
     fi
+    rm -rf flex/
     mkdir -p flex/
-    tar -xf flex-2.6.4.tar.gz -C flex --strip-components=1
+    tar -xf flex-$version.tar.gz -C flex --strip-components=1
     cd flex/
     LEX=: ./configure --prefix=/usr
     make
