@@ -1,6 +1,7 @@
 #!/bin/bash
 
 version="4.4.3"
+conflicts=("cmake-bin")
 depends=("")
 
 install() {
