@@ -4,9 +4,7 @@ version="3.1"
 depends=("bash")
 
 install() {
-    if [ ! -f $version.tar.gz ]; then
-        wget https://github.com/Nick-cpp/mspm/archive/refs/tags/$version.tar.gz
-    fi
+    wget https://github.com/Nick-cpp/mspm/archive/refs/tags/$version.tar.gz
     rm -rf mspm/
     mkdir -p mspm/
     tar -xf $version.tar.gz -C mspm/ --strip-components=1

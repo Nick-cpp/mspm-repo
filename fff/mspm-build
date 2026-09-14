@@ -4,9 +4,7 @@ version="2.2"
 depends=("bash")
 
 install() {
-    if [ ! -f $version.tar.gz ]; then
-        wget https://github.com/dylanaraps/fff/archive/refs/tags/$version.tar.gz
-    fi
+    wget https://github.com/dylanaraps/fff/archive/refs/tags/$version.tar.gz
     rm -rf fff/
     mkdir -p fff/
     tar -xf $version.tar.gz -C fff --strip-components=1

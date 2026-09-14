@@ -4,9 +4,7 @@ version="1.36.1"
 depends=("flex" "bison" "m4" "perl" "gawk")
 
 install() {
-    if [ ! -f busybox-$version.tar.bz2 ]; then
-        wget https://busybox.net/downloads/busybox-$version.tar.bz2
-    fi
+    wget https://busybox.net/downloads/busybox-$version.tar.bz2
     rm -rf busybox/
     mkdir -p busybox/
     tar -xf busybox-$version.tar.bz2 -C busybox --strip-components=1

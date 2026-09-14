@@ -4,9 +4,8 @@ version="4.0.1"
 depends=("perl")
 
 install() {
-    if [ ! -f openssl-4.0.1.tar.gz ]; then
-        wget https://github.com/openssl/openssl/releases/download/openssl-4.0.1/openssl-4.0.1.tar.gz
-    fi
+    wget https://github.com/openssl/openssl/releases/download/openssl-4.0.1/openssl-4.0.1.tar.gz
+    rm -rf openssl/
     mkdir -p openssl/
     tar -xf openssl-4.0.1.tar.gz -C openssl --strip-components=1
     cd openssl/

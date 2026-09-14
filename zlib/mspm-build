@@ -4,9 +4,8 @@ version="1.3.2"
 depends=("")
 
 install() {
-    if [ ! -f zlib-1.3.2.tar.gz ]; then
-        wget https://github.com/madler/zlib/releases/download/v1.3.2/zlib-1.3.2.tar.gz
-    fi
+    wget https://github.com/madler/zlib/releases/download/v1.3.2/zlib-1.3.2.tar.gz
+    rm -rf zlib/
     mkdir -p zlib/
     tar -xf zlib-1.3.2.tar.gz -C zlib --strip-components=1
     cd zlib/

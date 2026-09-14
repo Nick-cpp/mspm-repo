@@ -4,9 +4,7 @@ version="9.1.1652"
 depends=("ncurses" "python")
 
 install() {
-    if [ ! -f v$version.tar.gz ]; then
-        wget https://github.com/vim/vim/archive/refs/tags/v$version.tar.gz
-    fi
+    wget https://github.com/vim/vim/archive/refs/tags/v$version.tar.gz
     rm -rf vim/
     mkdir -p vim/
     tar -xf v$version.tar.gz -C vim --strip-components=1

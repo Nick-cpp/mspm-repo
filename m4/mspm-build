@@ -4,9 +4,7 @@ version="1.4.21"
 depends=("")
 
 install() {
-    if [ ! -f m4-$version.tar.gz ]; then
-        wget https://ftp.gnu.org/gnu/m4/m4-$version.tar.gz
-    fi
+    wget https://ftp.gnu.org/gnu/m4/m4-$version.tar.gz
     rm -rf m4/
     mkdir -p m4/
     tar -xf m4-$version.tar.gz -C m4 --strip-components=1

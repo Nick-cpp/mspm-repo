@@ -4,9 +4,7 @@ version="1.3"
 depends=("bash")
 
 install() {
-    if [ ! -f $version.tar.gz ]; then
-        wget https://github.com/Nick-cpp/nfetch/archive/refs/tags/$version.tar.gz
-    fi
+    wget https://github.com/Nick-cpp/nfetch/archive/refs/tags/$version.tar.gz
     rm -rf nfetch
     mkdir -p nfetch/
     tar -xf $version.tar.gz -C nfetch --strip-components=1

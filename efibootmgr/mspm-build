@@ -4,9 +4,7 @@ version="18"
 depends=("efivar" "popt")
 
 install() {
-    if [ ! -f $version.tar.gz ]; then
-        wget https://github.com/rhboot/efibootmgr/archive/refs/tags/$version.tar.gz
-    fi
+    wget https://github.com/rhboot/efibootmgr/archive/refs/tags/$version.tar.gz
     rm -rf efibootmgr/
     mkdir -p efibootmgr/
     tar -xf $version.tar.gz -C efibootmgr --strip-components=1

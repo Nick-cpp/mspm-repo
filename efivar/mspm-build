@@ -4,9 +4,7 @@ version="39"
 depends=("")
 
 install() {
-    if [ ! -f $version.tar.gz ]; then
-        wget https://github.com/rhboot/efivar/archive/refs/tags/$version.tar.gz
-    fi
+    wget https://github.com/rhboot/efivar/archive/refs/tags/$version.tar.gz
     rm -rf efivar/
     mkdir -p efivar/
     tar -xf $version.tar.gz -C efivar --strip-components=1

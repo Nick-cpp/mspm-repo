@@ -4,9 +4,7 @@ version="2.14"
 depends=("efibootmgr" "efivar" "flex" "bison")
 
 install() {
-    if [ ! -f grub-$version.tar.xz ]; then
-        wget https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz
-    fi
+    wget https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz
     rm -rf grub/
     mkdir -p grub/
     tar -xf grub-$version.tar.xz -C grub --strip-components=1

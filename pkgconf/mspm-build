@@ -4,9 +4,8 @@ version="3.0.4"
 depends=("")
 
 install() {
-    if [ ! -f pkgconf-3.0.4.tar.xz ]; then
-        wget https://github.com/pkgconf/pkgconf/releases/download/pkgconf-3.0.4/pkgconf-3.0.4.tar.xz
-    fi
+    wget https://github.com/pkgconf/pkgconf/releases/download/pkgconf-3.0.4/pkgconf-3.0.4.tar.xz
+    rm -rf pkgconf/
     mkdir -p pkgconf/
     tar -xf pkgconf-3.0.4.tar.xz -C pkgconf --strip-components=1
     cd pkgconf/
