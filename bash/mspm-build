@@ -1,14 +1,14 @@
 #!/bin/bash
 
-version="5.3.0"
+version="5.3"
 depends=("ncurses")
 
 install() {
-    if [ ! -f bash-5.3.tar.gz ]; then
-        wget https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz
+    if [ ! -f bash-$version.tar.gz ]; then
+        wget https://ftp.gnu.org/gnu/bash/bash-$version.tar.gz
     fi
     mkdir -p bash/
-    tar -xf bash-5.3.tar.gz -C bash --strip-components=1
+    tar -xf bash-$version.tar.gz -C bash --strip-components=1
     cd bash/
     ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib --without-bash-malloc
     make

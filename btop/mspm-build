@@ -4,11 +4,11 @@ version="1.4.7"
 depends=("cmake-bin||cmake")
 
 install() {
-    if [ ! -f v1.4.7.tar.gz ]; then
-        wget https://github.com/aristocratos/btop/archive/refs/tags/v1.4.7.tar.gz
+    if [ ! -f v$version.tar.gz ]; then
+        wget https://github.com/aristocratos/btop/archive/refs/tags/v$version.tar.gz
     fi
     mkdir -p btop/
-    tar -xf v1.4.7.tar.gz -C btop --strip-components=1
+    tar -xf v$version.tar.gz -C btop --strip-components=1
     cd btop/
     make
     make install
