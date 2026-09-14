@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.26"
+version="0.23.2"
 depends=("bash")
 
 install() {
@@ -11,14 +11,7 @@ install() {
     tar -xf gettext-$version.tar.xz -C gettext --strip-components=1
     cd gettext/
 
-    ac_cv_header_uchar_h=no \
-    gl_cv_header_working_uchar_h=no \
-    ./configure \
-        --prefix=/usr \
-        --disable-java \
-        --disable-native-java \
-        CFLAGS="${CFLAGS} -D_GNU_SOURCE -Wno-error" \
-        CXXFLAGS="${CXXFLAGS} -D_GNU_SOURCE -Wno-error"
+    ./configure --prefix=/usr \
 
     make -j$(nproc)
     make install
