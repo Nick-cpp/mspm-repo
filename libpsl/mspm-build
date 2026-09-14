@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="0.23.3"
+version="0.21.5"
 depends=("automake" "autoconf" "libtool" "gettext")
 
 install() {
