@@ -10,7 +10,7 @@ install() {
     mkdir -p gettext/
     tar -xf gettext-$version.tar.xz -C gettext --strip-components=1
     cd gettext/
-    ./configure --prefix=/usr
+    CFLAGS="${CFLAGS} -std=gnu11" ./configure --prefix=/usr
     make
     make install
 }
