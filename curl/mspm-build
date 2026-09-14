@@ -10,6 +10,7 @@ install() {
     mkdir -p curl/
     tar -xf curl-8_22_0.tar.gz -C curl --strip-components=1
     cd curl/
+    autoreconf -fi
     ./configure --prefix=/usr --with-openssl
     make
     make install
