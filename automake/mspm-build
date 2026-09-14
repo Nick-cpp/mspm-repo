@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="1.19"
+depends=("autoconf")
+
+install() {
+    rm -f automake-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/automake/automake-$version.tar.gz
+    rm -rf automake/
+    mkdir -p automake/
+    tar -xf automake-$version.tar.gz -C automake --strip-components=1
+    cd automake/
+    ./configure --prefix=/usr --docdir=/usr/share/doc/automake-$version
+    make
+    make install
+}
+
+remove() {
+    cd automake/
+    make uninstall
+}

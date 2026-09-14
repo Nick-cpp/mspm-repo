@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="2.73"
+depends=("")
+
+install() {
+    rm -f autoconf-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/autoconf/autoconf-$version.tar.gz
+    rm -rf autoconf/
+    mkdir -p autoconf/
+    tar -xf autoconf-$version.tar.gz -C autoconf --strip-components=1
+    cd autoconf/
+    ./configure --prefix=/usr
+    make
+    make install
+}
+
+remove() {
+    cd autoconf/
+    make uninstall
+}
