@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="4.2.6"
+depends=("")
+
+install() {
+    rm -f Angband-$version.tar.gz
+    wget https://github.com/angband/angband/releases/download/$version/Angband-$version.tar.gz
+    rm -rf angband/
+    mkdir -p angband/
+    tar -xf Angband-$version.tar.gz -C angband --strip-components=1
+    cd angband/
+    ./configure --disable-x11 --datadir=/etc/angband --sysconfdir=/etc/angband --bindir=/usr/bin --docdir=/usr/share/doc
+    make
+    make install
+}
+
+remove() {
+    cd angband/
+    make uninstall
+}
