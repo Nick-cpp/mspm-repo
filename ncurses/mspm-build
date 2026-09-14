@@ -13,9 +13,11 @@ install() {
     ./configure --prefix=/usr --mandir=/usr/share/man --with-shared --without-debug --enable-widec --enable-pc-files --with-pkg-config-libdir=/usr/lib/pkgconfig --with-termlib
     make
     make install
+    ln -sf /lib/libtinfow.so /lib/libtinfo.so
 }
 
 remove() {
     cd ncurses/
     make uninstall
+    rm /lib/libtinfo.so
 }
