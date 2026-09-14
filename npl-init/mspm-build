@@ -1,0 +1,37 @@
+#!/bin/bash
+
+version="1.2.4"
+depends=("busybox")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/Nick-cpp/npl-init/archive/refs/tags/v$version.tar.gz
+    rm -rf npl-init/
+    mkdir -p npl-init/
+    tar -xf v$version.tar.gz -C npl-init --strip-components=1
+    cd npl-init/
+    chmod +x init
+    chmod +x npli
+    chmod +x npl-init/lib
+    chmod +x npl-init/npl-halt
+    cp init /sbin/
+    cp npli /usr/bin/
+    mkdir -p /etc/npl-init/
+    cp npl-init/lib /etc/npl-init/
+    cp npl-init/npl-halt /etc/npl-init/
+    ln -svf /etc/npl-init/npl-halt /sbin/poweroff
+    ln -svf /etc/npl-init/npl-halt /sbin/reboot
+    ln -svf /etc/npl-init/npl-halt /sbin/halt
+    ln -svf /etc/npl-init/npl-halt /sbin/shutdown
+    mkdir -p /etc/acpi/PWRF/
+    mkdir -p /etc/acpi/PWRB
+    chmod +x acpi/PWRB/00000080
+    chmod +x acpi/PWRF/00000080
+    cp -f acpi/PWRB/00000080 /etc/acpi/PWRB/
+    cp -f acpi/PWRF/00000080 /etc/acpi/PWRF/
+}
+
+remove() {
+    cd npl-init/
+    make uninstall
+}
