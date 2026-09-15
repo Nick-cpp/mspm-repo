@@ -2,7 +2,7 @@
 
 version="2.68.1"
 conflits=("fastfetch-bin")
-depends=("cmake-bin||cmake")
+depends=("cmake-bin||cmake" "gcc" "glibc")
 
 install() {
     rm -f $version.tar.gz

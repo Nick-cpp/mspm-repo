@@ -12,7 +12,7 @@ install() {
     cd glibc/
     mkdir -p build/
     cd build/
-    ../configure --prefix=/usr --with-headers=/usr/include --without-selinux --libdir=/lib
+    ../configure --prefix=/usr --with-headers=/usr/include --without-selinux --libdir=/lib --disable-sanity-checks
     make
     make install
 }

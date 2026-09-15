@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="4.2.6"
-depends=("ncurses" "make")
+depends=("ncurses" "make" "gcc" "glibc")
 
 install() {
     rm -f Angband-$version.tar.gz

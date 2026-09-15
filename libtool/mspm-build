@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="2.6.2"
-depends=("bash" "m4" "make")
+depends=("bash" "m4" "make" "gcc" "glibc")
 
 install() {
     rm -f libtool-$version.tar.gz

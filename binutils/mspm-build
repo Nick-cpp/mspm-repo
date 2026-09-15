@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="2.47"
-depends=("zlib" "make")
+depends=("zlib" "make" "gcc" "glibc")
 
 install() {
     rm -f binutils-$version.tar.xz

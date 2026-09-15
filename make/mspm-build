@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="4.4"
-depends=("")
+depends=("gcc" "glibc")
 
 install() {
     rm -f make-$version.tar.gz

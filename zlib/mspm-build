@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="1.3.2"
-depends=("make")
+depends=("make" "gcc" "glibc")
 
 install() {
     rm -f zlib-$version.tar.gz

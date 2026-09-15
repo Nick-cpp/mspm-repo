@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="39"
-depends=("make")
+depends=("make" "gcc" "glibc")
 
 install() {
     rm -f $version.tar.gz

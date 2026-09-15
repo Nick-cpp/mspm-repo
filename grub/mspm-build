@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="2.14"
-depends=("efibootmgr" "efivar" "flex" "bison" "make")
+depends=("efibootmgr" "efivar" "flex" "bison" "make" "gcc" "glibc")
 
 install() {
     rm -f grub-$version.tar.xz

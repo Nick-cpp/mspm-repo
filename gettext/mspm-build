@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="0.23.2"
-depends=("ncurses" "libtool" "make")
+depends=("ncurses" "libtool" "make" "gcc" "glibc")
 
 install() {
     rm -f gettext-$version.tar.xz

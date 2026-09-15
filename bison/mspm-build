@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="3.8.2"
-depends=("m4" "make")
+depends=("m4" "make" "gcc" "glibc")
 
 install() {
     rm -f bison-$version.tar.gz
