@@ -12,7 +12,7 @@ install() {
     cd glibc/
     mkdir -p build/
     cd build/
-    echo -e '#!/usr/bin/perl\nexit 0;' > /etc/mspm/cache/master/glibc/glibc/scripts/test-installation.pl
+    echo -e '#!/usr/bin/perl\nexit 0;' > ../scripts/test-installation.pl
     ../configure --prefix=/usr --with-headers=/usr/include --without-selinux --libdir=/lib --disable-sanity-checks
     make
     make install
