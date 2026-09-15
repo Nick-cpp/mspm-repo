@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="5.8.4"
-depends=("make" "gcc" "glibc" "automake" "autoconf" "libtool" "po4a")
+depends=("make" "gcc" "glibc" "automake" "autoconf" "libtool")
 
 install() {
     rm -f v$version.tar.gz
@@ -10,7 +10,7 @@ install() {
     mkdir -p xz-utils/
     tar -xf v$version.tar.gz -C xz-utils --strip-components=1
     cd xz-utils/
-    ./autogen.sh
+    ./autogen.sh --no-po4a
     ./configure --prefix=/usr --disable-static --docdir=/usr/share/doc/xz
     make
     make install
