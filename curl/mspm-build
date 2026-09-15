@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="8.22.0"
-depends=("openssl" "autoconf" "automake" "libtool" "libpsl")
+depends=("openssl" "autoconf" "automake" "libtool" "libpsl" "make")
 
 install() {
     rm -f curl-8_22_0.tar.gz

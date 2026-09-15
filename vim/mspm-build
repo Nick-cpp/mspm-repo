@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="9.1.1652"
-depends=("ncurses" "python")
+depends=("ncurses" "python" "make")
 
 install() {
     rm -f v$version.tar.gz

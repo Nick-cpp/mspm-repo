@@ -11,8 +11,8 @@ install() {
     tar -xf make-$version.tar.gz -C make --strip-components=1
     cd make/
     ./configure --prefix=/usr --sysconfdir=/etc
-    make
-    make install
+    ./build.sh
+    ./make install
 }
 
 remove() {

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="3.0.4"
-depends=("")
+depends=("make")
 
 install() {
     rm -f pkgconf-$version.tar.xz

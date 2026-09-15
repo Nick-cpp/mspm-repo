@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="5.44.0"
-depends=("pkgconf")
+depends=("pkgconf" "make")
 
 install() {
     rm -f perl-$version.tar.gz

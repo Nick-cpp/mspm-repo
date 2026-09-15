@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="5.8.4"
+depends=("make")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/tukaani-project/xz/archive/refs/tags/v$version.tar.gz
+    rm -rf xz-utils/
+    mkdir -p xz-utils/
+    tar -xf v$version.tar.gz -C xz-utils --strip-components=1
+    cd xz-utils/
+    ./configure --prefix=/usr --disable-static --docdir=/usr/share/doc/xz
+    make
+    make install
+}
+
+remove() {
+    cd xz-utils/
+    make uninstall
+}

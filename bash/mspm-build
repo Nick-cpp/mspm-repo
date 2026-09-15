@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="5.3"
-depends=("ncurses")
+depends=("ncurses" "make")
 
 install() {
     rm -f bash-$version.tar.gz
