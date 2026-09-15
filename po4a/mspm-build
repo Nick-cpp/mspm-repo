@@ -1,0 +1,26 @@
+#!/bin/bash
+
+version="0.74"
+depends=("perl" "gcc" "glibc")
+
+install() {
+    rm -f po4a-$version.tar.gz
+    wget https://github.com/mquinson/po4a/releases/download/v$version/po4a-$version.tar.gz
+    rm -rf po4a/
+    mkdir -p po4a/
+    tar -xf po4a-$version.tar.gz -C po4a --strip-components=1
+    cd po4a/
+    perl Build.PL
+    ./Build
+    ./Build install
+}
+
+remove() {
+    cd po4a/
+    packlist=$(find /usr/lib* /usr/share -name .packlist 2>/dev/null | grep po4a)
+    if [ -n "$packlist" ]; then
+        xargs rm -f < "$packlist"
+        rm -f "$packlist"
+    fi
+    rm -rf /usr/share/po4a
+}
