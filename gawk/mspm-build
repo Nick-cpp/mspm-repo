@@ -13,9 +13,11 @@ install() {
     ./configure --prefix=/usr --sysconfdir=/etc
     make
     make install
+    ln -sfv /usr/bin/gawk /usr/bin/awk
 }
 
 remove() {
     cd gawk/
     make uninstall
+    rm -f /usr/bin/awk
 }
