@@ -1,0 +1,48 @@
+#!/bin/bash
+
+version="1.79.2"
+depends=("libxml2" "libxslt" "bash")
+
+install() {
+    local dest="/usr/share/xml/docbook/xsl-stylesheets-nons-${version}"
+    mkdir -p "$dest"
+
+    cp -R * "$dest/"
+
+    ln -sfn "xsl-stylesheets-nons-${version}" /usr/share/xml/docbook/xsl-stylesheets-nons-current
+
+    if [ ! -f /etc/xml/catalog ]; then
+        mkdir -p /etc/xml
+        xmlcatalog --noout --create /etc/xml/catalog
+    fi
+
+    xmlcatalog --noout --add "rewriteSystem" \
+        "http://docbook.sourceforge.net/release/xsl/current" \
+        "/usr/share/xml/docbook/xsl-stylesheets-nons-current" \
+        /etc/xml/catalog
+
+    xmlcatalog --noout --add "rewriteURI" \
+        "http://docbook.sourceforge.net/release/xsl/current" \
+        "/usr/share/xml/docbook/xsl-stylesheets-nons-current" \
+        /etc/xml/catalog
+
+    xmlcatalog --noout --add "rewriteSystem" \
+        "http://docbook.sourceforge.net/release/xsl/${version}" \
+        "/usr/share/xml/docbook/xsl-stylesheets-nons-${version}" \
+        /etc/xml/catalog
+
+    xmlcatalog --noout --add "rewriteURI" \
+        "http://docbook.sourceforge.net/release/xsl/${version}" \
+        "/usr/share/xml/docbook/xsl-stylesheets-nons-${version}" \
+        /etc/xml/catalog
+}
+
+remove() {
+    if [ -f /etc/xml/catalog ]; then
+        xmlcatalog --noout --del "/usr/share/xml/docbook/xsl-stylesheets-nons-current" /etc/xml/catalog 2>/dev/null
+        xmlcatalog --noout --del "/usr/share/xml/docbook/xsl-stylesheets-nons-${version}" /etc/xml/catalog 2>/dev/null
+    fi
+
+    rm -rf "/usr/share/xml/docbook/xsl-stylesheets-nons-${version}"
+    rm -f /usr/share/xml/docbook/xsl-stylesheets-nons-current
+}
