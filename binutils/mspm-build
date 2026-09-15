@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="2.47"
+depends=("zlib")
+
+install() {
+    rm -f binutils-$version.tar.xz
+    wget https://ftp.gnu.org/gnu/binutils/binutils-$version.tar.xz
+    rm -rf binutils/
+    mkdir -p binutils/
+    tar -xf binutils-$version.tar.xz -C binutils --strip-components=1
+    cd binutils/
+    ./configure --prefix=/usr --sysconfdir=/etc --enable-shared --enable-gold --with-system-zlib --with-pic
+    make
+    make install
+}
+
+remove() {
+    cd binutils/
+    make uninstall
+}

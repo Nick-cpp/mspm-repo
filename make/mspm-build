@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="4.4"
+depends=("")
+
+install() {
+    rm -f make-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/make/make-$version.tar.gz
+    rm -rf make/
+    mkdir -p make/
+    tar -xf make-$version.tar.gz -C make --strip-components=1
+    cd make/
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
+    make install
+}
+
+remove() {
+    cd make/
+    make uninstall
+}
