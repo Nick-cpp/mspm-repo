@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="0.23.2"
-depends=("bash")
+depends=("ncurses")
 
 install() {
     rm -f gettext-$version.tar.xz
