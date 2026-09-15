@@ -1,0 +1,24 @@
+#!/bin/bash
+
+version="0.4234"
+depends=("perl")
+
+install() {
+    rm -f Module-Build-${version}.tar.gz
+    wget https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-${version}.tar.gz
+    rm -rf Module-Build-${version}
+    tar -xf Module-Build-${version}.tar.gz
+    cd Module-Build-${version}
+
+    perl Makefile.PL
+    make -j$(nproc)
+    make install
+}
+
+remove() {
+    packlist=$(find /usr/lib* /usr/share -name .packlist 2>/dev/null | grep -i "Module/Build")
+    if [ -n "$packlist" ]; then
+        xargs rm -f < "$packlist"
+        rm -f "$packlist"
+    fi
+}
