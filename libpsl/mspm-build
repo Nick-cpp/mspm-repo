@@ -10,9 +10,11 @@ install() {
     mkdir -p libpsl/
     tar -xf $version.tar.gz -C libpsl --strip-components=1
     cd libpsl/
-    echo "EXTRA_DIST =" > gtk-doc.make
+    echo "CLEANFILES =" > gtk-doc.make
+    echo "EXTRA_DIST =" >> gtk-doc.make
     autoreconf -fiv
     ./configure --prefix=/usr
+    mkdir -p list/
     wget -O list/public_suffix_list.dat https://publicsuffix.org/list/public_suffix_list.dat
     make
     make install
