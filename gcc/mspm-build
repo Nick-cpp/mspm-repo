@@ -13,7 +13,7 @@ install() {
     ./contrib/download_prerequisites
     mkdir -p build/
     cd build/
-    ../configure --prefix=/usr --with-glibc-version=2.43 --disable-multilib --enable-languages=c,c++
+    ../configure --prefix=/usr --with-glibc-version=2.43 --disable-multilib --enable-languages=c,c++ --disable-libsanitizer
     make
     make install
 }
