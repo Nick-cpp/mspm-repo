@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="1.1.45"
+depends=("make" "gcc" "glibc" "zlib")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/GNOME/libxslt/archive/refs/tags/v$version.tar.gz
+    rm -rf libxslt/
+    mkdir -p libxslt/
+    tar -xf v$version.tar.gz -C libxslt --strip-components=1
+    cd libxslt/
+    ./autogen.sh
+    make
+    make install
+}
+
+remove() {
+    cd libxslt/
+    make uninstall
+}
