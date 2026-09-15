@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="0.74"
-depends=("perl" "gcc" "glibc" "perl-module-build")
+depends=("perl" "gcc" "glibc" "perl-module-build" "libxml2")
 
 install() {
     rm -f po4a-$version.tar.gz

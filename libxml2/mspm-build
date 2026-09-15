@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="2.15.4"
+depends=("make" "gcc" "glibc" "autoconf" "automake" "libtool")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/GNOME/libxml2/archive/refs/tags/v$version.tar.gz
+    rm -rf libxml2/
+    mkdir -p libxml2/
+    tar -xf v$version.tar.gz -C libxml2 --strip-components=1
+    cd libxml2/
+    ./autogen.sh
+    make
+    make install
+}
+
+remove() {
+    cd libxml2/
+    make uninstall
+}
