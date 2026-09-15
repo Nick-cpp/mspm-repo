@@ -1,0 +1,24 @@
+#!/bin/bash
+
+version="2.10.0"
+depends=("gcc" "glibc" "make")
+
+install() {
+    rm -f kbd-$version.tar.xz
+    wget https://www.kernel.org/pub/linux/utils/kbd/kbd-$version.tar.xz
+    rm -rf kbd-$version/
+    tar -xf kbd-$version.tar.xz
+    cd kbd-$version/
+
+    ./configure \
+        --prefix=/usr \
+        --disable-vlock
+
+    make
+    make install
+}
+
+remove() {
+    cd kbd-$version/
+    make uninstall
+}
