@@ -1,0 +1,23 @@
+#!/bin/bash
+
+version="2.43"
+depends=("make" "gcc")
+
+install() {
+    rm -f glibc-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/glibc/glibc-$version.tar.gz
+    rm -rf glibc/
+    mkdir -p glibc/
+    tar -xf glibc-$version.tar.gz -C glibc --strip-components=1
+    cd glibc/
+    mkdir -p build/
+    cd build/
+    ../configure --prefix=/usr --with-headers=/usr/include --without-selinux --libdir=/lib
+    make
+    make install
+}
+
+remove() {
+    cd glibc/build/
+    make uninstall
+}

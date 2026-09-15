@@ -1,0 +1,24 @@
+#!/bin/bash
+
+version="16.2.0"
+depends=("make" "glibc")
+
+install() {
+    rm -f gcc-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/gcc/gcc-$version/gcc-$version.tar.gz
+    rm -rf gcc/
+    mkdir -p gcc/
+    tar -xf gcc-$version.tar.gz -C gcc --strip-components=1
+    cd gcc/
+    ./contrib/download_prerequisites
+    mkdir -p build/
+    cd build/
+    ../configure --prefix=/usr --with-glibc-version=2.43 --disable-multilib --enable-languages=c,c++
+    make
+    make install
+}
+
+remove() {
+    cd gcc/build/
+    make uninstall
+}
