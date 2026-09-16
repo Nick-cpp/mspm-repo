@@ -1,0 +1,22 @@
+#!/bin/bash
+
+version="1.9.4"
+depends=("python" "make" "less" "ncurses")
+
+install() {
+    rm -f ranger-$version.tar.gz
+    wget https://github.com/ranger/ranger/archive/refs/tags/v1.9.4.tar.gz
+    tar -xf v1.9.4.tar.gz
+    cd ./ranger-1.9.4
+    python setup.py install --optimize=1 --record=install_log.txt
+    tail -f install_log.txt
+    echo "OK"
+}
+
+remove() {
+    cd ./ranger-1.9.4
+    while read file; do
+      rm -f "$file"
+    done < install_log.txt
+    echo "OK"
+}
