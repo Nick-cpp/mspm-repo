@@ -2,6 +2,7 @@
 
 version="6.18.39"
 depends=("gcc" "make" "flex" "bison" "busybox" "m4" "python" "elfutils")
+conflicts=("kernel-bin")
 
 install() {
     rm -f linux-$version.tar.gz
