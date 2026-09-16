@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="1.9.4"
-depends=("python" "make" "less" "ncurses")
+depends=("python" "make" "busybox" "ncurses")
 
 install() {
     rm -f ranger-$version.tar.gz
