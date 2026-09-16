@@ -11,12 +11,12 @@ install() {
     tar -xf kernel-bin.tar.xz -C kernel --strip-components=1
     cd kernel/
     mv modules/ /lib/
-    mv System.map-6.18.39-NoPersonalLife-Linux /boot/
+    mv System.map-6.18.39-NoPersonalLife-Linux-dist /boot/
     mv vmlinuz-npl /boot/
 }
 
 remove() {
     rm -rf /lib/modules/
-    rm -f /boot/System.map-6.18.39-NoPersonalLife-Linux
+    rm -f /boot/System.map-6.18.39-NoPersonalLife-Linux-dist
     rm -f /boot/vmlinuz-npl
 }
