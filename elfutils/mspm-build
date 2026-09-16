@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="0.195"
+depends=("make" "gcc" "glibc")
+
+install() {
+    rm -f elfutils-$version.tar.bz2
+    wget https://sourceware.org/elfutils/ftp/$version/elfutils-$version.tar.bz2
+    rm -rf elfutils/
+    mkdir -p elfutils/
+    tar -xf elfutils-$version.tar.bz2 -C elfutils --strip-components=1
+    cd elfutils/
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
+    make install
+}
+
+remove() {
+    cd elfutils/
+    make uninstall
+}

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+version="6.18.39"
+depends=()
+
+install() {
+    rm -f kernel-bin.tar.xz
+    wget https://codeberg.org/Nick-cpp/NPL-kernel-bin/raw/branch/main/kernel-bin.tar.xz
+    rm -rf kernel/
+    mkdir -p kernel/
+    tar -xf kernel-bin.tar.xz -C kernel --strip-components=1
+    cd kernel/
+    cp vmlinuz /boot/vmlinuz-npl
+    cp System.map /boot/System.map-$version-NoPersonalLife-Linux-dist
+    cp -rf modules/ /lib/
+}
+
+remove() {
+    rm -rf /lib/modules/$version-NoPersonalLife-Linux-dist
+    rm -f /boot/System.map-$version-NoPersonalLife-Linux-dist
+    rm -f /boot/vmlinuz-npl
+}
