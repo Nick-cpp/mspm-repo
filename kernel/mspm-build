@@ -1,0 +1,23 @@
+#!/bin/bash
+
+version="6.18.39"
+depends=("gcc" "make" "flex" "bison" "busybox" "m4" "python")
+
+install() {
+    rm -f linux-$version.tar.gz
+    wget https://www.kernel.org/pub/linux/kernel/v6.x/linux-$version.tar.gz
+    rm -rf kernel/
+    mkdir -p kernel/
+    tar -xf linux-$version.tar.gz -C kernel --strip-components=1
+    cd kernel/
+    wget https://codeberg.org/Nick-cpp/NPL-kernel/raw/branch/main/config
+    mv config .config
+    make
+    make install
+}
+
+remove() {
+    rm -rf /lib/modules/$version-NoPersonalLife-Linux-dist
+    rm -f /boot/System.map-$version-NoPersonalLife-Linux-dist
+    rm -f /boot/vmlinuz-npl
+}
