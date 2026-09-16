@@ -13,9 +13,11 @@ install() {
     ./configure --prefix=/usr --enable-shared --with-system-expat --without-ensurepip --enable-optimizations --with-openssl=/etc/ssl EXTRA_LDFLAGS="-lgcov"
     make
     make install
+    ln -sfv /usr/bin/python3 /usr/bin/python
 }
 
 remove() {
     cd Python/
     make uninstall
+    rm -f /usr/bin/python
 }
