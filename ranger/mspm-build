@@ -8,17 +8,16 @@ install() {
     wget https://github.com/ranger/ranger/archive/refs/tags/v$version.tar.gz
     rm -rf ranger/
     mkdir -p ranger/
-    tar -xf v1.9.4.tar.gz -C ranger --strip-components=1
+    tar -xf v$version.tar.gz -C ranger --strip-components=1
     cd ./ranger
     python setup.py install --optimize=1 --record=install_log.txt
-    tail -f install_log.txt
     echo "OK"
 }
 
 remove() {
-    cd ranger/
-    while read file; do
-      rm -f "$file"
-    done < install_log.txt
+    if [ -f ranger/install_log.txt ]; then
+        cd ranger/
+        xargs rm -rf < install_log.txt
+    fi
     echo "OK"
 }
