@@ -4,17 +4,19 @@ version="1.9.4"
 depends=("python" "make" "busybox" "ncurses" "gcc" "glibc")
 
 install() {
-    rm -f v1.9.4.tar.gz
-    wget https://github.com/ranger/ranger/archive/refs/tags/v1.9.4.tar.gz
-    tar -xf v1.9.4.tar.gz
-    cd ./ranger-1.9.4
+    rm -f v$version.tar.gz
+    wget https://github.com/ranger/ranger/archive/refs/tags/v$version.tar.gz
+    rm -rf ranger/
+    mkdir -p ranger/
+    tar -xf v1.9.4.tar.gz -C ranger --strip-components=1
+    cd ./ranger
     python setup.py install --optimize=1 --record=install_log.txt
     tail -f install_log.txt
     echo "OK"
 }
 
 remove() {
-    cd ./ranger-1.9.4
+    cd ranger/
     while read file; do
       rm -f "$file"
     done < install_log.txt
