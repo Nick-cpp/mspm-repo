@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="2.68.1"
-conflits=("fastfetch-bin")
+conflicts=("fastfetch-bin")
 depends=("cmake-bin||cmake" "gcc" "glibc")
 
 install() {
