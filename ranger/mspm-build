@@ -4,7 +4,7 @@ version="1.9.4"
 depends=("python" "make" "busybox" "ncurses" "gcc" "glibc")
 
 install() {
-    rm -f ranger-$version.tar.gz
+    rm -f v1.9.4.tar.gz
     wget https://github.com/ranger/ranger/archive/refs/tags/v1.9.4.tar.gz
     tar -xf v1.9.4.tar.gz
     cd ./ranger-1.9.4
