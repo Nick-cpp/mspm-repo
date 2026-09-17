@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="0.195"
-depends=("make" "gcc" "glibc" "tar" "zlib" "pkgconf")
+depends=("make" "gcc" "glibc" "tar" "zlib" "pkgconf" "m4")
 
 install() {
     rm -f elfutils-$version.tar.bz2
