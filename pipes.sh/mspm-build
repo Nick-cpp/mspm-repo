@@ -1,0 +1,20 @@
+#!/bin/bash
+
+version="1.3.0"
+depends=("make" "tar" "bash")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/pipeseroni/pipes.sh/archive/refs/tags/v$version.tar.gz
+    rm -rf pipes.sh/
+    mkdir -p pipes.sh/
+    tar -xf v$version.tar.gz -C pipes.sh --strip-components=1
+    cd pipes.sh/
+    make prefix=/usr
+    make install prefix=/usr
+}
+
+remove() {
+    cd pipes.sh/
+    make uninstall prefix=/usr
+}
