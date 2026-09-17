@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="8.3"
+depends=("make" "gcc" "glibc" "tar" "ncurses")
+
+install() {
+    rm -f readline-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/readline/readline-$version.tar.gz
+    rm -rf readline/
+    mkdir -p readline/
+    tar -xf readline-$version.tar.gz -C readline --strip-components=1
+    cd readline/
+    ./configure --prefix=/usr
+    make
+    make install
+}
+
+remove() {
+    cd readline/
+    make uninstall
+}

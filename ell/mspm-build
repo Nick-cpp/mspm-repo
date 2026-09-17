@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="0.83"
+depends=("make" "gcc" "glibc" "tar" "libtool" "pkgconf")
+
+install() {
+    rm -f ell-$version.tar.gz
+    wget https://www.kernel.org/pub/linux/libs/ell/ell-$version.tar.gz
+    rm -rf ell/
+    mkdir -p ell/
+    tar -xf ell-$version.tar.gz -C ell --strip-components=1
+    cd ell/
+    ./configure --prefix=/usr
+    make
+    make install
+}
+
+remove() {
+    cd ell/
+    make uninstall
+}
