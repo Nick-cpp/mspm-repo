@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="2.73"
-depends=("make" "gcc" "glibc" "tar")
+depends=("make" "gcc" "glibc" "tar" "perl")
 
 install() {
     rm -f autoconf-$version.tar.gz
