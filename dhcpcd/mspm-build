@@ -13,12 +13,18 @@ install() {
     ./configure --prefix=/usr --sysconfdir=/etc --with-hooks="10-wpa_supplicant  15-timezone  29-lookup-hostname"
     make
     make install
+    cd ..
+    rm -f service
+    wget -O service https://raw.githubusercontent.com/Nick-cpp/npl-init-services/main/dhcpcd/dhcpcd
+    mkdir -p /etc/npl-init/sv/
+    cp service /etc/npl-init/sv/dhcpcd
+    chmod +x /etc/npl-init/sv/dhcpcd
 }
 
 remove() {
     rm -f /usr/sbin/dhcpcd /usr/bin/dhcpcd
     rm -f /usr/libexec/dhcpcd-run-hooks
-    rm -rf /usr/libexec/dhcpcd-hooks /usr/lib/dhcpcd
+    rm -rf /usr/libexec/dhcpcd-hooks /usr/lib/dhcpcd /usr/share/dhcpcd
     rm -f /etc/dhcpcd.conf
     rm -f /usr/share/man/man5/dhcpcd.conf.5 \
           /usr/share/man/man8/dhcpcd.8 \
