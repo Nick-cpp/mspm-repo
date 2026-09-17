@@ -11,8 +11,8 @@ install() {
     mkdir -p kernel/
     tar -xf kernel-bin.tar.xz -C kernel --strip-components=1
     cd kernel/
-    cp vmlinuz /boot/vmlinuz-npl
-    cp System.map /boot/System.map-$version-NoPersonalLife-Linux-dist
+    cp vmlinuz-npl /boot/
+    cp System.map-$version-NoPersonalLife-Linux-dist /boot/
     cp -rf modules/ /lib/
 }
 
