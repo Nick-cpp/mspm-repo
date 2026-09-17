@@ -1,0 +1,27 @@
+#!/bin/bash
+
+version="3.12"
+depends=("make" "gcc" "glibc" "tar")
+
+install() {
+    rm -f iwd-$version.tar.gz
+    wget https://www.kernel.org/pub/linux/network/wireless/iwd-$version.tar.gz
+    rm -rf iwd/
+    mkdir -p iwd/
+    tar -xf iwd-$version.tar.gz -C iwd --strip-components=1
+    cd iwd/
+    ./configure --prefix=/usr --sysconfdir=/etc --disable-systemd-service --localstatedir=/var
+    make
+    make install
+    cd ..
+    rm -f service
+    wget -O service https://raw.githubusercontent.com/Nick-cpp/npl-init-services/main/iwd/iwd
+    mkdir -p /etc/npl-init/sv/
+    cp service /etc/npl-init/sv/iwd
+    chmod +x /etc/npl-init/sv/iwd
+}
+
+remove() {
+    cd iwd/
+    make uninstall
+}
