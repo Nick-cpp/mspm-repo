@@ -14,7 +14,7 @@ install() {
     wget https://codeberg.org/Nick-cpp/NPL-kernel/raw/branch/main/config
     mv config .config
     make
-    cp vmlinuz /boot/vmlinuz-npl
+    cp arch/x86/boot/bzImage /boot/vmlinuz-npl
     cp System.map /boot/System.map-$version-NoPersonalLife-Linux-dist
     make modules_install
 }

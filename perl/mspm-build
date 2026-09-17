@@ -18,6 +18,10 @@ install() {
 }
 
 remove() {
-    cd perl/
-    make uninstall
+    rm -rf /usr/lib/perl5/5.44
+
+    rm -f /usr/bin/perl* /usr/bin/cpan* /usr/bin/corelist \
+         /usr/bin/prove /usr/bin/ptar* /usr/bin/shasum \
+         /usr/bin/pod* /usr/bin/h2ph /usr/bin/h2xs \
+         /usr/bin/json_pp /usr/bin/xsubpp /usr/bin/piconv
 }
