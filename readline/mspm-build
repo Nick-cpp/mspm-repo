@@ -10,7 +10,7 @@ install() {
     mkdir -p readline/
     tar -xf readline-$version.tar.gz -C readline --strip-components=1
     cd readline/
-    ./configure --prefix=/usr
+    ./configure --prefix=/usr --disable-static
     make
     make install
 }
