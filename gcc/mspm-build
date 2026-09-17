@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="16.2.0"
-depends=("make" "glibc" "libtool" "gawk")
+depends=("make" "glibc" "libtool" "gawk" "tar")
 
 install() {
     rm -f gcc-$version.tar.gz

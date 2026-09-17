@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="6.18.39"
-depends=("gcc" "make" "flex" "bison" "busybox" "m4" "python" "elfutils" "perl")
+depends=("gcc" "make" "flex" "bison" "busybox" "m4" "python" "elfutils" "perl" "tar")
 conflicts=("kernel-bin")
 
 install() {

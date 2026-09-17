@@ -2,7 +2,7 @@
 
 version="4.4.3"
 conflicts=("cmake-bin")
-depends=("make" "gcc" "glibc")
+depends=("make" "gcc" "glibc" "tar")
 
 install() {
     rm -f v$version.tar.gz

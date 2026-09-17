@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="1.36.1"
-depends=("flex" "bison" "m4" "perl" "gawk" "make" "gcc" "glibc")
+depends=("flex" "bison" "m4" "perl" "gawk" "make" "gcc" "glibc" "tar")
 
 install() {
     rm -f busybox-$version.tar.bz2

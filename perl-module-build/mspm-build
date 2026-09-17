@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="0.4234"
-depends=("perl")
+depends=("perl" "tar")
 
 install() {
     rm -f Module-Build-${version}.tar.gz

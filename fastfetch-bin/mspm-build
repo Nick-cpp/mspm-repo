@@ -2,7 +2,7 @@
 
 version="2.68.1"
 conflicts=("fastfetch")
-depends=("glibc")
+depends=("glibc" "tar")
 
 install() {
     rm -f fastfetch-linux-amd64.tar.gz

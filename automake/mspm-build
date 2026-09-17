@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="1.19"
-depends=("autoconf" "make" "gcc" "glibc")
+depends=("autoconf" "make" "gcc" "glibc" "tar")
 
 install() {
     rm -f automake-$version.tar.gz

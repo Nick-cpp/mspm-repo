@@ -2,7 +2,7 @@
 
 version="4.4.3"
 conflicts=("cmake")
-depends=("glibc")
+depends=("glibc" "tar")
 
 install() {
     rm -f cmake-$version-linux-x86_64.tar.gz

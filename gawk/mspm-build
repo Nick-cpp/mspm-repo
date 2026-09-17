@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="5.3.2"
-depends=("make" "gcc" "glibc")
+depends=("make" "gcc" "glibc" "tar")
 
 install() {
     rm -f gawk-$version.tar.gz

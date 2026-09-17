@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="1.35"
+depends=("make" "gcc" "glibc")
+
+install() {
+    rm -f tar-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/tar/tar-$version.tar.gz
+    rm -rf tar/
+    mkdir -p tar/
+    tar -xf tar-$version.tar.gz -C tar --strip-components=1
+    cd tar/
+    ./configure --prefix=/usr --sysconfdir=/etc --without-posix-acls
+    make
+    make install
+}
+
+remove() {
+    cd tar/
+    make uninstall
+}

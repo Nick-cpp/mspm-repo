@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="9.2"
+depends=("make" "gcc" "glibc" "ncurses" "tar")
+
+install() {
+    rm -f nano-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/nano/nano-$version.tar.gz
+    rm -rf nano/
+    mkdir -p nano/
+    tar -xf nano-$version.tar.gz -C nano --strip-components=1
+    cd nano/
+    ./configure --prefix=/usr --sysconfdir=/etc
+    make
+    make install
+}
+
+remove() {
+    cd nano/
+    make uninstall
+}
