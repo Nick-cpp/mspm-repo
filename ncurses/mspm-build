@@ -16,9 +16,9 @@ install() {
     ln -sfv /lib/libtinfow.so /lib/libtinfo.so
     ln -sfv libncursesw.so /lib/libncurses.so
     ln -sfv libncursesw.so.6 /lib/libncurses.so.6
-    ln -sf ncursesw.pc /lib/tinfo.pc
-    ln -sf ncursesw.pc /lib/tinfow.pc
-    ln -sf ncursesw.pc /lib/ncurses.pc
+    ln -sfv ncursesw.pc /lib/tinfo.pc
+    ln -sfv ncursesw.pc /lib/tinfow.pc
+    ln -sfv ncursesw.pc /lib/ncurses.pc
 }
 
 remove() {
