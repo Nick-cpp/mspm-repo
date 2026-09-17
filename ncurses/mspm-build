@@ -14,10 +14,14 @@ install() {
     make
     make install
     ln -sfv /lib/libtinfow.so /lib/libtinfo.so
+    ln -sfv libncursesw.so /lib/libncurses.so
+    ln -sfv libncursesw.so.6 /lib/libncurses.so.6
 }
 
 remove() {
     cd ncurses/
     make uninstall
-    rm /lib/libtinfo.so
+    rm -f /lib/libtinfo.so
+    rm -f /lib/libncurses.so
+    rm -f /lib/libncurses.so.6
 }
