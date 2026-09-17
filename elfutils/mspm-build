@@ -11,7 +11,7 @@ install() {
     tar -xf elfutils-$version.tar.bz2 -C elfutils --strip-components=1
     cd elfutils/
     export CFLAGS="${CFLAGS} -fPIE -fPIC -Wno-error"
-    export CXXLAGS="${CXXLAGS} -fPIE -fPIC -Wno-error"
+    export CXXFLAGS="${CXXLAGS} -fPIE -fPIC -Wno-error"
     ./configure --prefix=/usr --sysconfdir=/etc --disable-werror
     make
     make install
