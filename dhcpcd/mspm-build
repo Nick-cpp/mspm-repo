@@ -1,0 +1,26 @@
+#!/bin/bash
+
+version="10.5.2"
+depends=("make" "gcc" "glibc" "tar")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/NetworkConfiguration/dhcpcd/archive/refs/tags/v$version.tar.gz
+    rm -rf dhcpcd/
+    mkdir -p dhcpcd/
+    tar -xf v$version.tar.gz -C dhcpcd --strip-components=1
+    cd dhcpcd/
+    ./configure --prefix=/usr --sysconfdir=/etc --with-hooks="10-wpa_supplicant  15-timezone  29-lookup-hostname"
+    make
+    make install
+}
+
+remove() {
+    rm -f /usr/sbin/dhcpcd /usr/bin/dhcpcd
+    rm -f /usr/libexec/dhcpcd-run-hooks
+    rm -rf /usr/libexec/dhcpcd-hooks /usr/lib/dhcpcd
+    rm -f /etc/dhcpcd.conf
+    rm -f /usr/share/man/man5/dhcpcd.conf.5 \
+          /usr/share/man/man8/dhcpcd.8 \
+          /usr/share/man/man8/dhcpcd-run-hooks.8
+}
