@@ -10,8 +10,8 @@ install() {
     mkdir -p git/
     tar -xf v$version.tar.gz -C git --strip-components=1
     cd git/
-    make prefix=/usr NO_TCLTK=1
-    make prefix=/usr NO_TCLTK=1 install
+    make prefix=/usr NO_TCLTK=1 NO_RUST=1
+    make prefix=/usr NO_TCLTK=1 NO_RUST=1 install
 }
 
 remove() {
