@@ -1,19 +1,22 @@
 #!/bin/bash
 
 version="6.18.39"
-depends=("tar")
-conflicts=("kernel")
+depends=("gcc" "make" "flex" "bison" "busybox" "m4" "python" "elfutils" "perl" "tar")
+conflicts=("kernel-bin")
 
 install() {
-    rm -f kernel-bin.tar.xz
-    wget https://codeberg.org/Nick-cpp/NPL-kernel-bin/raw/branch/main/kernel-bin.tar.xz
+    rm -f linux-$version.tar.gz
+    wget https://www.kernel.org/pub/linux/kernel/v6.x/linux-$version.tar.gz
     rm -rf kernel/
     mkdir -p kernel/
-    tar -xf kernel-bin.tar.xz -C kernel --strip-components=1
+    tar -xf linux-$version.tar.gz -C kernel --strip-components=1
     cd kernel/
-    cp vmlinuz-npl /boot/
-    cp System.map-$version-NoPersonalLife-Linux-dist /boot/
-    cp -rf modules/ /lib/
+    wget https://codeberg.org/Nick-cpp/NPL-kernel/raw/branch/main/config
+    mv config .config
+    make
+    cp arch/x86/boot/bzImage /boot/vmlinuz-npl
+    cp System.map /boot/System.map-$version-NoPersonalLife-Linux-dist
+    make modules_install
 }
 
 remove() {
