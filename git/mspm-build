@@ -1,0 +1,29 @@
+#!/bin/bash
+
+version="2.55.0"
+depends=("make" "gcc" "glibc" "tar" "curl" "libexpat" "gettext" "python" "gettext" "perl")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/git/git/archive/refs/tags/v$version.tar.gz
+    rm -rf git/
+    mkdir -p git/
+    tar -xf v$version.tar.gz -C git --strip-components=1
+    cd git/
+    make prefix=/usr NO_TCLTK=1
+    make prefix=/usr NO_TCLTK=1 install
+}
+
+remove() {
+    rm -rf /usr/libexec/git-core \
+           /usr/share/git-core \
+           /usr/share/git-web
+
+    rm -f /usr/bin/git \
+          /usr/bin/git-cvsserver \
+          /usr/bin/git-receive-pack \
+          /usr/bin/git-shell \
+          /usr/bin/git-upload-archive \
+          /usr/bin/git-upload-pack \
+          /usr/bin/scalar
+}
