@@ -1,0 +1,31 @@
+#!/bin/bash
+
+version="1.16.2"
+depends=("cmake||cmake-bin" "gcc" "glibc" "tar")
+
+install() {
+    rm -f dbus-$version.tar.xz
+    wget https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz
+    rm -rf dbus/
+    mkdir -p dbus/
+    tar -xf dbus-$version.tar.xz -C dbus --strip-components=1
+    cd dbus/
+    cmake -B build -S . \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
+        -DCMAKE_BUILD_TYPE=Release    make
+    cmake --install build
+}
+
+remove() {
+    rm -f /usr/bin/dbus-*
+    rm -f /usr/lib/libdbus-1*
+    rm -f /usr/lib/pkgconfig/dbus-1.pc
+    rm -rf /usr/lib/cmake/DBus1
+    rm -rf /usr/include/dbus-1.0
+    rm -rf /usr/lib/dbus-1.0
+    rm -rf /etc/dbus-1
+    rm -rf /usr/share/dbus-1
+    rm -rf /usr/share/doc/dbus
+}
