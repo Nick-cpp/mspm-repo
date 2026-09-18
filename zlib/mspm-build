@@ -10,12 +10,12 @@ install() {
     mkdir -p zlib/
     tar -xf zlib-$version.tar.gz -C zlib --strip-components=1
     cd zlib/
-    ./configure --prefix=/usr
-    make
-    make install
+    ./configure
+    make prefix=/usr
+    make install prefix=/usr
 }
 
 remove() {
     cd zlib/
-    make uninstall
+    make uninstall prefix=/usr
 }
