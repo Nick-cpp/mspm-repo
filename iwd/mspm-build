@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="3.12"
-depends=("make" "gcc" "glibc" "tar" "readline" "ell" "ncurses" "dbus")
+depends=("make" "gcc" "glibc" "tar" "readline" "ell" "ncurses" "dbus" "libtool")
 
 install() {
     rm -f iwd-$version.tar.gz
@@ -10,7 +10,7 @@ install() {
     mkdir -p iwd/
     tar -xf iwd-$version.tar.gz -C iwd --strip-components=1
     cd iwd/
-    ./configure --prefix=/usr --sysconfdir=/etc --disable-systemd-service --localstatedir=/var
+    LIBS="-lncursesw" ./configure --prefix=/usr --sysconfdir=/etc --disable-systemd-service --localstatedir=/var
     make
     make install
     cd ..
@@ -24,4 +24,5 @@ install() {
 remove() {
     cd iwd/
     make uninstall
+    rm -f /etc/npl-init/sv/iwd
 }

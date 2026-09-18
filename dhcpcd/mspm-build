@@ -22,6 +22,7 @@ install() {
 }
 
 remove() {
+    rm -f /etc/npl-init/sv/dhcpcd
     rm -f /usr/sbin/dhcpcd /usr/bin/dhcpcd
     rm -f /usr/libexec/dhcpcd-run-hooks
     rm -rf /usr/libexec/dhcpcd-hooks /usr/lib/dhcpcd /usr/share/dhcpcd

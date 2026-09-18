@@ -18,6 +18,12 @@ install() {
         -DCMAKE_BUILD_TYPE=Release    make
     cmake --build build
     cmake --install build
+    cd ..
+    rm -f service
+    wget -O service https://raw.githubusercontent.com/Nick-cpp/npl-init-services/main/dbus/dbus
+    mkdir -p /etc/npl-init/sv/
+    cp service /etc/npl-init/sv/dbus
+    chmod +x /etc/npl-init/sv/dbus
 }
 
 remove() {
@@ -30,4 +36,5 @@ remove() {
     rm -rf /etc/dbus-1
     rm -rf /usr/share/dbus-1
     rm -rf /usr/share/doc/dbus
+    rm -f /etc/npl-init/sv/dbus
 }
