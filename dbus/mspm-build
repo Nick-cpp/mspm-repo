@@ -13,6 +13,7 @@ install() {
     cmake -B build -S . \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
         -DCMAKE_BUILD_TYPE=Release    make
     cmake --install build
