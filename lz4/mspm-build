@@ -1,0 +1,20 @@
+#!/bin/bash
+
+version="1.10.0"
+depends=("make" "gcc" "glibc" "tar")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/lz4/lz4/archive/refs/tags/v$version.tar.gz
+    rm -rf lz4/
+    mkdir -p lz4/
+    tar -xf v$version.tar.gz -C lz4 --strip-components=1
+    cd lz4/
+    make prefix=/usr
+    make install prefix=/usr
+}
+
+remove() {
+    cd lz4/
+    make uninstall prefix=/usr
+}

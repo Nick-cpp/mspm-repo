@@ -1,0 +1,20 @@
+#!/bin/bash
+
+version="1.5.7"
+depends=("make" "gcc" "glibc" "tar" "zlib" "lz4")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/facebook/zstd/archive/refs/tags/v$version.tar.gz
+    rm -rf zstd/
+    mkdir -p zstd/
+    tar -xf v$version.tar.gz -C zstd --strip-components=1
+    cd zstd/
+    make prefix=/usr
+    make install prefix=/usr
+}
+
+remove() {
+    cd zstd/
+    make uninstall prefix=/usr
+}
