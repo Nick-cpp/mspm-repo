@@ -16,6 +16,7 @@ install() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_LOCALSTATEDIR=/var \
         -DCMAKE_BUILD_TYPE=Release    make
+    cmake --build build
     cmake --install build
 }
 
