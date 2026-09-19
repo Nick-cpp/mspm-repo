@@ -24,9 +24,16 @@ install() {
     mkdir -p /etc/npl-init/sv/
     cp service /etc/npl-init/sv/dbus
     chmod +x /etc/npl-init/sv/dbus
+    addgroup -g 81 messagebus 2>/dev/null || groupadd -g 81 messagebus 2>/dev/null || true
+    addgroup wheel
+    addgroup netdev
+
+    adduser -D -S -G messagebus -h /run/dbus -s /bin/false messagebus
 }
 
 remove() {
+    deluser messagebus
+    delgroup messagebus
     rm -f /usr/bin/dbus-*
     rm -f /usr/lib/libdbus-1*
     rm -f /usr/lib/pkgconfig/dbus-1.pc
