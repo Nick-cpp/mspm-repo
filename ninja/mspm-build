@@ -4,6 +4,7 @@ version="1.13.2"
 depends=("make" "gcc" "glibc" "tar" "python" "cmake||cmake-bin")
 
 install() {
+    cd "$(dirname "$0")" || exit 1
     rm -f v$version.tar.gz
     wget https://github.com/ninja-build/ninja/archive/refs/tags/v$version.tar.gz
     rm -rf src/
