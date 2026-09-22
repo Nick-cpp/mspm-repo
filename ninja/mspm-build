@@ -4,20 +4,15 @@ version="1.13.2"
 depends=("make" "gcc" "glibc" "tar" "python" "cmake||cmake-bin")
 
 install() {
-    cd "$(dirname "$0")" || exit 1
     rm -f v$version.tar.gz
     wget https://github.com/ninja-build/ninja/archive/refs/tags/v$version.tar.gz
-    rm -rf src/
-    mkdir -p src/
-    tar -xf v$version.tar.gz -C src --strip-components=1
-    (
-        cd src/
-        python3 configure.py --bootstrap --verbose
-        install -vm755 ninja /usr/bin/
-        mkdir -p /usr/share/bash-completion/completions /usr/share/zsh/site-functions
-        install -vDm644 misc/bash-completion /usr/share/bash-completion/completions/ninja
-        install -vDm644 misc/zsh-completion  /usr/share/zsh/site-functions/_ninja
-    )
+    rm -rf ninja/
+    mkdir -p ninja/
+    tar -xf v$version.tar.gz -C ninja --strip-components=1
+    cd src/
+    cmake -B build -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+    cmake --install build
 }
 
 remove() {
