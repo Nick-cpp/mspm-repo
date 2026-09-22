@@ -11,9 +11,9 @@ install() {
     tar -xf v$version.tar.gz -C libffi --strip-components=1
     cd libffi/
     ./autogen.sh
-    ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib
-    make
-    make install
+    MAKEINFO=true ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib --disable-static
+    MAKEINFO=true make
+    MAKEINFO=true make install
 }
 
 remove() {
