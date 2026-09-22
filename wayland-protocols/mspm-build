@@ -1,0 +1,24 @@
+#!/bin/bash
+
+version="1.49"
+depends=("make" "gcc" "glibc" "tar" "ninja" "meson" "wayland")
+
+install() {
+    rm -f wayland-protocols-$version.tar.gz
+    wget https://gitlab.freedesktop.org/wayland/wayland-protocols/-/archive/$version/wayland-protocols-$version.tar.gz
+    rm -rf wayland-protocols/
+    mkdir -p wayland-protocols/
+    tar -xf wayland-$version.tar.gz -C wayland-protocols --strip-components=1
+    cd wayland-protocols/
+    mkdir build/
+    cd    build/
+
+    meson setup --prefix=/usr --buildtype=release
+    ninja
+    ninja install
+}
+
+remove() {
+    cd wayland-protocols/
+    ninja -C build uninstall
+}
