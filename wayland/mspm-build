@@ -23,5 +23,5 @@ install() {
 
 remove() {
     cd wayland/
-    ninja uninstall
+    ninja -C build uninstall
 }
