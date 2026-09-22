@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="1.26.0"
-depends=("make" "gcc" "glibc" "tar" "ninja" "meson" "libxml2" "xz-utils")
+depends=("make" "gcc" "glibc" "tar" "ninja" "meson" "libxml2" "xz-utils" "libffi")
 
 install() {
     rm -f wayland-$version.tar.xz
