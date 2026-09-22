@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="2.18.3"
-depends=("make" "gcc" "glibc" "tar" "xz-utils" "freetype")
+depends=("make" "gcc" "glibc" "tar" "xz-utils" "freetype" "gperf")
 
 install() {
     rm -f fontconfig-$version.tar.xz

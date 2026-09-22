@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="3.3"
+depends=("make" "gcc" "glibc" "tar")
+
+install() {
+    rm -f gperf-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/gperf/gperf-$version.tar.gz
+    rm -rf gperf/
+    mkdir -p gperf/
+    tar -xf gperf-$version.tar.gz -C gperf --strip-components=1
+    cd gperf/
+    ./configure --prefix=/usr --docdir=/usr/share/doc/gperf-$version
+    make
+    make install
+}
+
+remove() {
+    cd gperf/
+    make uninstall
+}
