@@ -10,12 +10,12 @@ install() {
     mkdir -p libxslt/
     tar -xf v$version.tar.gz -C libxslt --strip-components=1
     cd libxslt/
-    CPPFLAGS="-I/usr/include/libxml2" ./autogen.sh
-    make prefix=/usr
-    make install prefix=/usr
+    CPPFLAGS="-I/usr/include/libxml2" ./autogen.sh prefix=/usr
+    make
+    make install
 }
 
 remove() {
     cd libxslt/
-    make uninstall prefix=/usr
+    make uninstall
 }

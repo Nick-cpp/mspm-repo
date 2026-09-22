@@ -10,12 +10,12 @@ install() {
     mkdir -p libxml2/
     tar -xf v$version.tar.gz -C libxml2 --strip-components=1
     cd libxml2/
-    ./autogen.sh
-    make prefix=/usr
-    make install prefix=/usr
+    ./autogen.sh prefix=/usr
+    make
+    make install
 }
 
 remove() {
     cd libxml2/
-    make uninstall prefix=/usr
+    make uninstall
 }
