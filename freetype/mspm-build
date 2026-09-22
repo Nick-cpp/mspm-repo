@@ -8,7 +8,7 @@ install() {
     wget https://downloads.sourceforge.net/freetype/freetype-$version.tar.xz
     rm -rf freetype/
     mkdir -p freetype/
-    tar -xf freetype-$version.tar.gz -C freetype --strip-components=1
+    tar -xf freetype-$version.tar.xz -C freetype --strip-components=1
     cd freetype/
     ./configure --prefix=/usr --disable-static --enable-freetype-config --with-harfbuzz=dynamic
     make
