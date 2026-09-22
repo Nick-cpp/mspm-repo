@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="2.14.3"
+depends=("make" "gcc" "glibc" "tar" "xz-utils")
+
+install() {
+    rm -f freetype-$version.tar.xz
+    wget https://downloads.sourceforge.net/freetype/freetype-$version.tar.xz
+    rm -rf freetype/
+    mkdir -p freetype/
+    tar -xf freetype-$version.tar.gz -C freetype --strip-components=1
+    cd freetype/
+    ./configure --prefix=/usr --disable-static --enable-freetype-config --with-harfbuzz=dynamic
+    make
+    make install
+}
+
+remove() {
+    cd freetype/
+    make uninstall
+}
