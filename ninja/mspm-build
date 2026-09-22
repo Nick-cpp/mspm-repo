@@ -6,10 +6,10 @@ depends=("make" "gcc" "glibc" "tar" "python" "cmake||cmake-bin")
 install() {
     rm -f v$version.tar.gz
     wget https://github.com/ninja-build/ninja/archive/refs/tags/v$version.tar.gz
-    rm -rf ninja/
-    mkdir -p ninja/
-    tar -xf v$version.tar.gz -C ninja --strip-components=1
-    cd ninja/
+    rm -rf src/
+    mkdir -p src/
+    tar -xf v$version.tar.gz -C src --strip-components=1
+    cd src/
     python3 configure.py --bootstrap --verbose
 	install -vm755 ninja /usr/bin/
 	install -vDm644 misc/bash-completion /usr/share/bash-completion/completions/ninja
