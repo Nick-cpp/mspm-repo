@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="2.18.3"
+depends=("make" "gcc" "glibc" "tar" "xz-utils" "freetype")
+
+install() {
+    rm -f fontconfig-$version.tar.xz
+    wget https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/$version/fontconfig-$version.tar.xz
+    rm -rf fontconfig/
+    mkdir -p fontconfig/
+    tar -xf fontconfig-$version.tar.xz -C fontconfig --strip-components=1
+    cd fontconfig/
+    ./configure --prefix=/usr --disable-static --sysconfdir=/etc --localstatedir=/var --disable-docs --docdir=/usr/share/doc/fontconfig-$version
+    make
+    make install
+}
+
+remove() {
+    cd fontconfig/
+    make uninstall
+}
