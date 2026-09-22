@@ -1,0 +1,22 @@
+#!/bin/bash
+
+version="3.5.2"
+depends=("make" "gcc" "glibc" "tar" "autoconf" "automake")
+
+install() {
+    rm -f v$version.tar.gz
+    wget https://github.com/libffi/libffi/archive/refs/tags/v$version.tar.gz
+    rm -rf libffi/
+    mkdir -p libffi/
+    tar -xf v$version.tar.gz -C libffi --strip-components=1
+    cd libffi/
+    ./autogen.sh
+    ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib
+    make
+    make install
+}
+
+remove() {
+    cd libffi/
+    make uninstall
+}
