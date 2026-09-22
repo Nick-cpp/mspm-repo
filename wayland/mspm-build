@@ -8,7 +8,7 @@ install() {
     wget https://gitlab.freedesktop.org/wayland/wayland/-/releases/$version/downloads/wayland-$version.tar.xz
     rm -rf wayland/
     mkdir -p wayland/
-    tar -xf wayland-$version.tar.gz -C wayland --strip-components=1
+    tar -xf wayland-$version.tar.xz -C wayland --strip-components=1
     cd wayland/
     mkdir build/
     cd    build/
