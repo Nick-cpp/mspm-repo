@@ -1,0 +1,22 @@
+#!/bin/bash
+
+version="84.0.0"
+depends=("python" "gcc" "glibc" "tar")
+
+install() {
+    rm -f setuptools-$version.tar.gz
+    wget https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-$version.tar.gz
+    rm -rf setuptools/
+    mkdir -p setuptools/
+    tar -xf setuptools-$version.tar.gz -C setuptools --strip-components=1
+    cd setuptools/
+
+    python3 setup.py build
+    python3 setup.py install --prefix=/usr --root=/
+}
+
+remove() {
+    rm -rf /usr/lib/python3.14/site-packages/setuptools*
+    rm -rf /usr/lib/python3.14/site-packages/pkg_resources*
+    rm -f /usr/bin/easy_install*
+}

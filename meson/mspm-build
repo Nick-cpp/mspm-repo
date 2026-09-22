@@ -1,0 +1,25 @@
+#!/bin/bash
+
+version="1.12.0"
+depends=("make" "gcc" "glibc" "tar" "ninja" "python-setuptools")
+
+install() {
+    rm -f $version.tar.gz
+    wget https://github.com/mesonbuild/meson/archive/refs/tags/$version.tar.gz
+    rm -rf meson/
+    mkdir -p meson/
+    tar -xf $version.tar.gz -C meson --strip-components=1
+    cd meson/
+    python3 setup.py build
+    python3 setup.py install --prefix=/usr --root=/
+}
+
+remove() {
+    rm -f /usr/bin/meson
+    rm -rf /usr/lib/python3.14/site-packages/meson*
+    rm -rf /usr/share/meson/
+    rm -f /usr/share/man/man1/meson.1
+    rm -f /usr/share/polkit-1/actions/com.mesonbuild.install.policy
+    rm -f /usr/share/bash-completion/completions/meson
+    rm -f /usr/share/zsh/site-functions/_meson
+}

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+version="1.26.0"
+depends=("make" "gcc" "glibc" "tar" "ninja" "meson" "libxml2" "xz-utils")
+
+install() {
+    rm -f wayland-$version.tar.xz
+    wget https://gitlab.freedesktop.org/wayland/wayland/-/releases/$version/downloads/wayland-$version.tar.xz
+    rm -rf wayland/
+    mkdir -p wayland/
+    tar -xf wayland-$version.tar.gz -C wayland --strip-components=1
+    cd wayland/
+    mkdir build/
+    cd    build/
+
+    meson setup ..            \
+          --prefix=/usr       \
+          --buildtype=release \
+          -D documentation=false
+    ninja
+    ninja install
+}
+
+remove() {
+    cd wayland/
+    ninja uninstall
+}
