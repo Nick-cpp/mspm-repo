@@ -1,0 +1,24 @@
+#!/bin/bash
+
+version="2025.1"
+depends=("make" "gcc" "glibc" "tar" "xz-utils" "util-macros")
+
+install() {
+    rm -f xorgproto-$version.tar.xz
+    wget https://xorg.freedesktop.org/archive/individual/proto/xorgproto-$version.tar.xz
+    rm -rf xorgproto/
+    mkdir -p xorgproto/
+    tar -xf xorgproto-$version.tar.xz -C xorgproto --strip-components=1
+    cd xorgproto/
+	mkdir build/
+	cd build/
+
+	meson setup --prefix=/usr ..
+	ninja
+    ninja install
+}
+
+remove() {
+    cd xorgproto/
+    ninja -C build uninstall
+}

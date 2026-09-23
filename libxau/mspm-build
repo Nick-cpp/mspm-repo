@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="1.0.12"
+depends=("make" "gcc" "glibc" "tar" "xorgproto" "xz-utils")
+
+install() {
+    rm -f libXau-$version.tar.xz
+    wget https://www.x.org/pub/individual/lib/libXau-$version.tar.xz
+    rm -rf libXau/
+    mkdir -p libXau/
+    tar -xf libXau-$version.tar.xz -C libXau --strip-components=1
+    cd libXau/
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
+    make
+    make install
+}
+
+remove() {
+    cd libXau/
+    make uninstall
+}

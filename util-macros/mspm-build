@@ -10,7 +10,7 @@ install() {
     mkdir -p util-macros/
     tar -xf util-macros-$version.tar.xz -C util-macros --strip-components=1
     cd util-macros/
-    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
     make install
 }
 
