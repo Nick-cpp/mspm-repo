@@ -1,0 +1,20 @@
+#!/bin/bash
+
+version="1.20.2"
+depends=("make" "gcc" "glibc" "tar" "xz-utils")
+
+install() {
+    rm -f util-macros-$version.tar.xz
+    wget https://www.x.org/pub/individual/util/util-macros-$version.tar.xz
+    rm -rf util-macros/
+    mkdir -p util-macros/
+    tar -xf util-macros-$version.tar.xz -C util-macros --strip-components=1
+    cd util-macros/
+    ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --disable-static
+    make install
+}
+
+remove() {
+    cd util-macros/
+    make uninstall
+}
