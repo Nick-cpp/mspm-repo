@@ -11,10 +11,11 @@ install() {
     mkdir -p fastfetch/
     tar -xf $version.tar.gz -C fastfetch --strip-components=1
     cd fastfetch/
-    ./run.sh
-    cp build/fastfetch /usr/bin/fastfetch
+    cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
+    cmake --build build
+    cmake --install build
 }
 
 remove() {
-    rm -f /usr/bin/fastfetch
+    cmake --uninstall build
 }
