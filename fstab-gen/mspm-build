@@ -1,0 +1,19 @@
+#!/bin/bash
+
+version="1.0"
+depends=("busybox" "util-linux")
+
+install() {
+    rm -f $version.tar.gz
+    wget https://github.com/Nick-cpp/npl-fstab-generator/archive/refs/tags/$version.tar.gz
+    rm -rf fstab-gen/
+    mkdir -p fstab-gen/
+    tar -xf $version.tar.gz -C fstab-gen --strip-components=1
+    cd fstab-gen/
+    chmod +x fstab-gen
+    cp fstab-gen /usr/bin/
+}
+
+remove() {
+    rm -f /usr/bin/fstab-gen
+}
