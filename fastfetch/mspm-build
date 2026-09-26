@@ -17,5 +17,6 @@ install() {
 }
 
 remove() {
+    cd fastfetch/
     cmake --uninstall build
 }
