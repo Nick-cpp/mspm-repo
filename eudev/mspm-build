@@ -14,10 +14,8 @@ install() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/sbin --bindir=/bin --disable-static
     make
     make install
-	if [ ! -f /bin/udevadm ] && [ -f src/udev/udevadm ]; then
-	    cp src/udev/udevadm /bin/udevadm
-	    chmod +x /bin/udevadm
-	fi
+	cp src/udev/udevadm /bin/udevadm
+	chmod +x /bin/udevadm
     cd ..
     rm -f service
     wget -O service https://raw.githubusercontent.com/Nick-cpp/npl-init-services/main/eudev/eudev
