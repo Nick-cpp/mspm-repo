@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="3.2.15"
-depends=("make" "gcc" "glibc" "tar" "autoconf" "automake")
+depends=("make" "gcc" "glibc" "tar" "autoconf" "automake" "gperf")
 
 install() {
     rm -f v$version.tar.gz
@@ -14,12 +14,17 @@ install() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/sbin --bindir=/bin --disable-static
     make
     make install
+	if [ ! -f /bin/udevadm ] && [ -f src/udev/udevadm ]; then
+	    cp src/udev/udevadm /bin/udevadm
+	    chmod +x /bin/udevadm
+	fi
     cd ..
     rm -f service
     wget -O service https://raw.githubusercontent.com/Nick-cpp/npl-init-services/main/eudev/eudev
     mkdir -p /etc/npl-init/sv/
     cp service /etc/npl-init/sv/eudev
     chmod +x /etc/npl-init/sv/eudev
+
 }
 
 remove() {
