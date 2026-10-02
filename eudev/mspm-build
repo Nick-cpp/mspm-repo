@@ -14,6 +14,7 @@ install() {
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/sbin --bindir=/bin --disable-static
     make
     make install
+    rm -f /bin/udevadm
 	cp src/udev/udevadm /bin/udevadm
 	chmod +x /bin/udevadm
     cd ..
