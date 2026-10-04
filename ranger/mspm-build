@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="1.9.4"
-depends=("python" "make" "coreutils" "ncurses" "gcc" "glibc" "python-setuptools")
+depends=("python" "make" "busybox" "ncurses" "gcc" "glibc" "python-setuptools")
 
 install() {
     rm -f v$version.tar.gz
