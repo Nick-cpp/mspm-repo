@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="2.3.0"
+depends=("make" "gcc" "glibc" "tar" "gzip")
+
+install() {
+    rm -f wget2-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/wget/wget2-$version.tar.gz
+    rm -rf wget/
+    mkdir -p wget/
+    tar -xf wget2-$version.tar.gz -C wget --strip-components=1
+    cd wget/
+    ./configure --prefix=/usr
+    make
+    make install
+}
+
+remove() {
+    cd wget/
+    make uninstall
+}

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+version="3.12"
+depends=("make" "gcc" "glibc" "tar" "gzip")
+
+install() {
+    rm -f grep-$version.tar.gz
+    wget https://ftp.gnu.org/gnu/grep/grep-$version.tar.gz
+    rm -rf grep/
+    mkdir -p grep/
+    tar -xf grep-$version.tar.gz -C grep --strip-components=1
+    cd grep/
+    ./configure --prefix=/usr
+    make
+    make install
+}
+
+remove() {
+    cd grep/
+    make uninstall
+}

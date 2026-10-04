@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="1.0"
-depends=("busybox" "util-linux")
+depends=("coreutils" "util-linux")
 
 install() {
     rm -f $version.tar.gz
