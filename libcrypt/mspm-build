@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="4.5.2"
-depends=("make" "gcc" "glibc" "tar" "autoconf" "automake")
+depends=("make" "gcc" "glibc" "tar" "autoconf" "automake" "libtool")
 
 install() {
     rm -f v$version.tar.gz
