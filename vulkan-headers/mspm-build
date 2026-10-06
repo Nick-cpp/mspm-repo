@@ -1,0 +1,28 @@
+#!/bin/bash
+
+version="1.4.363.0"
+depends=("cmake||cmake-bin")
+
+install() {
+    rm -f vulkan-sdk-$version.tar.gz
+    wget https://github.com/KhronosGroup/Vulkan-Headers/archive/vulkan-sdk-$version.tar.gz
+    rm -rf vulkan-headers/
+    mkdir -p vulkan-headers/
+    tar -xf vulkan-sdk-$version.tar.gz -C vulkan-headers --strip-components=1
+    cd vulkan-headers/
+    cmake -B build -S . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DCMAKE_SKIP_INSTALL_RPATH=ON
+
+    cmake --install build 
+}
+
+remove() {
+    rm -rf /usr/include/vulkan \
+    /usr/include/vk-video \
+    /usr/share/vulkan \
+    /usr/share/cmake
+    
+}
