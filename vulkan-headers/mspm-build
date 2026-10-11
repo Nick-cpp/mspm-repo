@@ -6,7 +6,7 @@ depends=("make" "gcc" "glibc" "tar" "cmake||cmake-bin" "ninja")
 install() {
     rm -f Vulkan-Headers-vulkan-sdk-$version.tar.gz
     wget https://github.com/KhronosGroup/Vulkan-Headers/archive/vulkan-sdk-$version/Vulkan-Headers-vulkan-sdk-$version.tar.gz
-    rm -rf vulkder-headers/
+    rm -rf vulkan-headers/
     mkdir -p vulkan-headers/
     tar -xf Vulkan-Headers-vulkan-sdk-$version.tar.gz -C vulkan-headers --strip-components=1
     cd vulkan-headers/
