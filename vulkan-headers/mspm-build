@@ -18,6 +18,5 @@ install() {
 }
 
 remove() {
-    cd vulkan-headers/
-    ninja -C build uninstall
+xargs rm -fv < vulkan-headers/build/install_manifest.txt
 }
