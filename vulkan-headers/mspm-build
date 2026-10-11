@@ -1,0 +1,23 @@
+#!/bin/bash
+
+version="1.4.357.0"
+depends=("make" "gcc" "glibc" "tar" "cmake" "ninja")
+
+install() {
+    rm -f Vulkan-Headers-vulkan-sdk-$version.tar.gz
+    wget https://github.com/KhronosGroup/Vulkan-Headers/archive/vulkan-sdk-$version/Vulkan-Headers-vulkan-sdk-$version.tar.gz
+    rm -rf vulkder-headers/
+    mkdir -p vulkan-headers/
+    tar -xf Vulkan-Headers-vulkan-sdk-$version.tar.gz -C vulkan-headers --strip-components=1
+    cd vulkan-headers/
+    mkdir build/
+    cd build/
+    cmake -D CMAKE_INSTALL_PREFIX=/usr -G Ninja .
+    ninja
+    ninja install
+}
+
+remove() {
+    cd vulkan-headers/
+    ninja -C build uninstall
+}
