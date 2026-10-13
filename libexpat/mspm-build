@@ -1,11 +1,11 @@
 #!/bin/bash
 
-version="2.8.5"
+version="2.9.0"
 depends=("make" "gcc" "glibc" "tar")
 
 install() {
     rm -f expat-$version.tar.xz
-    wget https://github.com/libexpat/libexpat/releases/download/R_2_8_5/expat-$version.tar.xz
+    wget https://github.com/libexpat/libexpat/releases/download/R_2_9_0/expat-$version.tar.xz
     rm -rf expat/
     mkdir -p expat/
     tar -xf expat-$version.tar.xz -C expat --strip-components=1
