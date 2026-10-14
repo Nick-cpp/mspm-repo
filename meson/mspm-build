@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.12.0"
+version="1.12.1"
 depends=("make" "gcc" "glibc" "tar" "ninja" "python-setuptools")
 
 install() {
