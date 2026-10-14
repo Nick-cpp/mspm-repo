@@ -10,11 +10,11 @@ install() {
     mkdir -p btop/
     tar -xf v$version.tar.gz -C btop --strip-components=1
     cd btop/
-    make
-    make install
+    make PREFIX=/usr
+    make install PREFIX=/usr
 }
 
 remove() {
     cd btop/
-    make uninstall
+    make uninstall PREFIX=/usr
 }
