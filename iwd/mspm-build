@@ -10,7 +10,7 @@ install() {
     mkdir -p iwd/
     tar -xf iwd-$version.tar.gz -C iwd --strip-components=1
     cd iwd/
-    LIBS="-lncursesw" ./configure --prefix=/usr --sysconfdir=/etc --disable-systemd-service --localstatedir=/var
+    ./configure --prefix=/usr --sysconfdir=/etc --disable-systemd-service --localstatedir=/var --enable-client --enable-monitor --enable-daemon --enable-year2038
     make
     make install
     cd ..
