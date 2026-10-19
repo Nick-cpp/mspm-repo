@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="2.14"
+version="2.12"
 depends=("flex" "bison" "make" "gcc" "glibc" "python" "tar" "pkgconf")
 conflicts=("grub")
 
