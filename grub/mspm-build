@@ -2,6 +2,7 @@
 
 version="2.14"
 depends=("efibootmgr" "efivar" "flex" "bison" "make" "gcc" "glibc" "python" "tar" "pkgconf")
+conflicts=("grub-legacy")
 
 install() {
     rm -f grub-$version.tar.xz

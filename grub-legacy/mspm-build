@@ -1,0 +1,22 @@
+#!/bin/bash
+
+version="2.14"
+depends=("flex" "bison" "make" "gcc" "glibc" "python" "tar" "pkgconf")
+conflicts=("grub")
+
+install() {
+    rm -f grub-$version.tar.xz
+    wget https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz
+    rm -rf grub/
+    mkdir -p grub/
+    tar -xf grub-$version.tar.xz -C grub --strip-components=1
+    cd grub/
+    ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib --localstatedir=/var --disable-werror --with-platform=pc
+    make
+    make install
+}
+
+remove() {
+    cd grub/
+    make uninstall
+}
