@@ -12,6 +12,7 @@ install() {
     tar -xf grub-$version.tar.xz -C grub --strip-components=1
     cd grub/
     ./configure --prefix=/usr --sysconfdir=/etc --libdir=/usr/lib --localstatedir=/var --disable-werror --with-platform=pc
+    touch grub-core/extra_deps.lst
     make
     make install
 }
