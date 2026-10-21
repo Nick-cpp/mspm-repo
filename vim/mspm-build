@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="9.1.1652"
+version="9.2.1119"
 depends=("ncurses" "python" "make" "gcc" "glibc" "tar")
 
 install() {
