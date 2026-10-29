@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version="2.12"
-depends=("flex" "bison" "make" "gcc" "glibc" "python" "tar" "pkgconf")
+depends=("flex" "bison" "make" "gcc" "glibc" "python" "tar" "pkgconf" "gawk")
 conflicts=("grub")
 
 install() {
